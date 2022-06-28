@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{error500.name}"></title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+<div class="conteiner">
+    <header th:insert="blocks/header::header"></header>
+    <div>
+        <header th:insert="blocks/menu::menu"></header>
+    </div>
+    <img class="error_img" src="./img/error.png" alt="error">
+    <div class="error_text">
+        <h1 th:text="#{error500.name}">Sorry, the server has an error.</h1>
+        <h1 th:text="#{error500.text}">Sorry, the server has an error.</h1>
+    </div>
+    <footer id="footer_other" th:insert="blocks/footer::footer"></footer>
+</div>
+</body>
+</html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en"-->
+<!--      xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <link rel="stylesheet" type="text/css" href="/header.css"/>-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/error/error.css"/>-->
+<!--    <link rel="stylesheet" type="text/css" href="/css/main.css"/>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title th:text="#{error500.name}"></title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="pageHead">-->
+<!--    <header th:insert="blocks/header::header"></header>-->
+
+<!--    <div class="headerPageTable">-->
+<!--        <div class="nameOfPage">-->
+<!--            <a th:text="#{error500.name}"/>-->
+<!--        </div>-->
+<!--        <header th:insert="blocks/menu::menu"></header>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="bodyExceptHeader">-->
+<!--<h1 th:text="#{error500.text}">Sorry, the server has an error</h1>-->
+<!--</div>-->
+<!--<footer th:insert="blocks/footer::footer"></footer>-->
+<!--</body>-->
+<!--</html>-->

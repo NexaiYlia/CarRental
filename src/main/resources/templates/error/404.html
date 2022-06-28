@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{error404.name}"></title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+    <div class="conteiner">
+        <header th:insert="blocks/header::header"></header>
+        <div>
+            <header th:insert="blocks/menu::menu"></header>
+        </div>
+        <img class="error_img" src="./img/error.png" alt="error">
+        <div class="error_text">
+            <h1 th:text="#{error404.name}">The page not found</h1>
+            <h1 th:text="#{error404.text}">The page not found</h1>
+        </div>
+        <footer id="footer_other" th:insert="blocks/footer::footer"></footer>
+    </div>
+</body>
+</html>

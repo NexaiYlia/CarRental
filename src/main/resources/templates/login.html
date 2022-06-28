@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title th:text="#{login.tittle}">Login</title>
+        <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+        <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    </head>
+    <body>
+        <div class="conteiner">
+            <div th:insert="blocks/header::header"></div>
+            <div th:insert="blocks/menu::menu"></div>
+            <div class="pageHead">
+            </div>
+            <div class="form_login">
+                <form th:action="@{/login}" method="post" style="max-width: 400px; margin: 0 auto;">
+                    <div th:unless="${error}==null">
+                        <p>
+                            <a th:text="${error}"></a>
+                        </p>
+                    </div>
+                    <div>
+                        <label for="inputForUsername" th:text="#{login.username}" class="label">Username :</label>
+                        <input type="text" name="username" id="inputForUsername" th:placeholder="#{login.placeholderForUsername}"  class="input"/>
+                    </div>
+                    <div>
+                        <label for="inputForPassword" th:text="#{login.password}" class="label">Password: </label>
+                        <input type="password" name="password" id="inputForPassword" th:placeholder="#{login.placeholderForPassword}" required class="input" />
+                    </div>
+                    <div class="remember">
+                        <input type="checkbox" name="remember-me" id="remember-me" class="checkbox">
+                        <label for="remember-me" th:text="#{login.rememberMe}" class="checkbox_label">Remember me</label>
+                    </div>
+                    <div>
+                        <button type="submit" th:text="#{login.signIn}" class="form_login_button">Sign in</button>
+                    </div>
+            </form>
+            </div>
+            </div>
+        </div>
+        <footer th:insert="blocks/footer::footer" id="footer_registration"></footer>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+
+    <h1 th:text="#{paymentInfo.suc}">The order has been successfully paid.</h1>
+    <div class="paymentInfo" id="paymentInfo">
+        <div>
+            <div>
+                <p><a th:text="#{paymentInfo.id}">ID: </a>
+                    <strong th:text="${payment.id}" id="id"></strong></p>
+            </div>
+            <div>
+                <p><a th:text="#{paymentInfo.status}">Status: </a>
+                    <strong th:text="${payment.status}" id="status"></strong></p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <p><a th:text="#{paymentInfo.paymentDate}">Payment date:</a>
+                    <strong th:text="${payment.paymentDate}" id="paymentDate"></strong></p>
+            </div>
+            <div>
+                <p><a th:text="#{paymentInfo.totalPrice}">Total price:</a>
+                    <strong th:text="${payment.totalPrice}" id="totalPrice"></strong></p>
+            </div>
+            <div>
+                <p><a th:text="#{paymentInfo.car}">Car:</a>
+                    <strong th:text="${order.car.getBrand}" id="brand"></strong>
+                    <strong th:text="${order.car.getModel}" id="model"></strong>
+                </p>
+            </div>
+            <div>
+                <p><a th:text="#{paymentInfo.user}">User:</a>
+                    <strong th:text="${order.user.getName}" id="userName"></strong>
+                    <strong th:text="${order.user.getSurname}" id="userSurname"></strong></p>
+            </div>
+            <div>
+                <p><a th:text="#{paymentInfo.card}">Card:</a>
+                    <strong th:text="${card}" id="card"></strong>
+            </div>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-secondary m-2" onclick="cancelForm()" th:text="#{payment.cancel}"> Cancel</button>
+</div>
+
+</div>
+
+<script type="text/javascript">
+    function cancelForm(){
+    window.location="[[@{/}]]";
+    }
+
+
+</script>
+<footer th:insert="blocks/footer::footer"></footer>
+</body>
+</html>

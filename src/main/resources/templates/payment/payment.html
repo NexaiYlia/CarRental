@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+    <div class="text-center"><h2>[[${pageTitle}]]</h2></div>
+    <th:block th:each="payment:${payments}">
+        <div>
+            <p><a th:text="#{paymentInfo.totalPrice}">Total price:</a>
+                <strong th:text="${payment.totalPrice}" id="totalPrice"></strong></p>
+        </div>
+        <div>
+            <p><a th:text="#{paymentInfo.car}">Car:</a>
+                <strong th:text="${order.car.getBrand}" id="brand"></strong>
+                <strong th:text="${order.car.getModel}" id="model"></strong>
+            </p>
+        </div>
+        <div>
+            <p><a th:text="#{paymentInfo.car}">Date:</a>
+                <strong th:text="${order.startDate}" id="startDate"></strong>
+                <strong th:text="${order.endDate}" id="endDate"></strong>
+            </p>
+        </div>
+        <div>
+            <p><a th:text="#{paymentInfo.user}">User:</a>
+                <strong th:text="${order.user.getName}" id="userName"></strong>
+                <strong th:text="${order.user.getSurname}" id="userSurname"></strong></p>
+        </div>
+        __________________________________________________________________________________________________________________________
+    </th:block>
+</div>
+<form method="GET" th:action="@{'/orders/1'}">
+    <input type="hidden" name="sortField" value="id"/>
+    <input type="hidden" name="sortDirection" value="asc"/>
+    <button type="submit" th:text="#{menu.back}" id="btnUsersForAdmin">Back</button>
+</form>
+<footer th:insert="blocks/footer::footer"></footer>
+</body>
+</html>

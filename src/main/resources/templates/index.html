@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.orh/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="#{app.title}">Car Rental</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+    <main class="main-content">
+        <h1 th:text="#{app.slogan}">Car rental from economy to premium class.</h1>
+        <section class="choose_type">
+            <h2  th:text="#{app.choice}">Choice by car class:</h2>
+            <div class="choose_item">
+                <a th:href="@{/carsForUser/type?carType=ECONOMY}">
+                    <img src="./img/car_types/ekonomy-300x200.jpg" class="choose_item_img" alt="Универсал">
+                    <span class="choose_item_dscr" th:text="#{app.economy}">Economy</span>
+                </a>
+            </div>
+            <div class="choose_item">
+                <a th:href="@{/carsForUser/type?carType=STANDART}">
+                    <img src="./img/car_types/std-300x200.jpg" class="choose_item_img" alt="Универсал">
+                    <span class="choose_item_dscr" th:text="#{app.standard}">Standard</span>
+                </a>
+            </div>
+            <div class="choose_item">
+                <a th:href="@{/carsForUser/type?carType=PREMIUM}">
+                    <img src="./img/car_types/premium-300x200-1.jpg" class="choose_item_img" alt="Универсал">
+                    <span class="choose_item_dscr" th:text="#{app.premium}">Premium</span>
+                </a>
+            </div>
+            <section class="choose_price">
+                <h2 th:text="#{app.cost}">Choice by rental price:</h2>
+                <form id="form_rent_price" th:action="@{/carsForUser}" method="get">
+                    <input type="number" placeholder="0" name="pricePerDayAfter" value="0" min="0">
+                    <input type="number" placeholder="0" name="pricePerDayBefore" value="0" min="0">
+                    <button type="submit" th:text="#{app.show}">Show</button>
+                </form>
+            </section>
+            <section class="choose_brand">
+                <h2 th:text="#{app.marka}">Brand selection:</h2>
+                <div class="choose_brand_item">
+                    <a th:href="@{/carsForUser/brand?brand=bmw}">
+                        <img src="./img/brands/bmw_logo.png" class="choose_brand_img" alt="bmw_logo">
+                    </a>
+                </div>
+                <div class="choose_brand_item">
+                    <a th:href="@{/carsForUser/brand?brand=vw}">
+                        <img src="./img/brands/vw_logo.png"  class="choose_brand_img" alt="vw_logo">
+                    </a>
+                </div>
+                <div class="choose_brand_item">
+                    <a th:href="@{/carsForUser/brand?brand=skoda}">
+                        <img src="./img/brands/skoda_logo.png" class="choose_brand_img" alt="skoda_logo">
+                    </a>
+                </div>
+                <div class="choose_brand_item">
+                    <a th:href="@{/carsForUser/brand?brand=renault}">
+                        <img src="./img/brands/renault_logo.png" class="choose_brand_img" alt="renault_logo">
+                    </a>
+                </div>
+                <div class="choose_brand_item">
+                    <a th:href="@{/carsForUser/brand?brand=toyota}">
+                        <img src="./img/brands/toyota_logo.png" class="choose_brand_img" alt="toyota_logo">
+                    </a>
+                </div>
+                <div class="choose_brand_item">
+                    <a th:href="@{/carsForUser/brand?brand=hyundai}">
+                        <img src="./img/brands/hyundai_logo.png" class="choose_brand_img" alt="hyundai_logo">
+                    </a>
+                </div>
+            </section>
+    </main>
+    <div class="homePageBtn">
+        <form th:method="GET" th:action="@{/}">
+            <button type="submit" th:text="#{menu.home}">Home</button>
+        </form>
+    </div>
+    <footer th:insert="blocks/footer::footer"></footer>
+</div>
+</body>
+</html>
+
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.orh/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="#{app.title}">Contacts</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+    <h1 class="headOfPage" th:text="#{h1.ContactUs}"></h1>
+    <div class="contacts_wrap">
+        <div class="map" style="position:relative;overflow:hidden;">
+            <a href="https://yandex.by/maps/10274/grodno/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Гродно</a>
+            <a href="https://yandex.by/maps/10274/grodno/house/ZkoYfgJkTUICQFtpfXp1eHxgbQ==/?indoorLevel=1&ll=23.855737%2C53.649998&utm_medium=mapframe&utm_source=maps&z=18.03" style="color:#eee;font-size:12px;position:absolute;top:14px;">Проспект Янки Купалы, 87/2 — Яндекс Карты</a>
+            <iframe class="map_frame" src="https://yandex.by/map-widget/v1/-/CCUNUOcDDB" frameborder="0" allowfullscreen="true" style="position:relative;"></iframe>
+        <div class="contacts_text">
+            <h3 th:text="#{h3.Phone}">Phone us:</h3>
+            <div><a href="tel:+375336573265">+375(33)657-32-65</a></div>
+            <h3 th:text="#{h3.Adress}">Visit us:</h3>
+            <div><a href="https://yandex.by/maps/-/CCUNUOdmtD">проспект Янки Купалы, 87/2</a></div>
+
+        </div>
+
+        </div>
+    </div>
+    <footer id="footer_other" th:insert="blocks/footer::footer"></footer>
+</div>
+</body>
+</html>

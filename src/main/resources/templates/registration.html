@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.orh/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{authorization.tittle}">Authorization</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<div class="conteiner">
+    <div class="pageHead">
+            <div th:insert="blocks/header::header"></div>
+            <div th:insert="blocks/menu::menu"></div>
+    </div>
+    <div id="form_signUp">
+        <form th:method="POST" th:action="@{/registration}" th:object="${user}">
+            <div th:unless="${error}==null">
+                <p>
+                    <a th:text="${error}"></a>
+                </p>
+            </div>
+            <div>
+                <label for="username" th:text="#{authorization.username}">Enter username</label>
+                <input type="text" name="username" id="username" th:placeholder="#{login.placeholderForUsername}"
+                       class="input"/>
+                <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username error
+                </div>
+            </div>
+            <div>
+                <label for="password" th:text="#{authorization.password}" class="label">Enter password: </label>
+                <input type="password" name="password" id="password" th:placeholder="#{login.password}" required
+                       class="input"/>
+                <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error
+                </div>
+            </div>
+            <div>
+                <label for="name" th:text="#{authorization.name}" class="label">Enter name: </label>
+                <input type="name" name="name" id="name" th:placeholder="#{login.placeholderForName}" required
+                       class="input"/>
+                <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+            </div>
+
+            <div>
+                <label for="surname" th:text="#{authorization.surname}" class="label">Enter surname</label>
+                <input type="surname" name="surname" th:field="*{surname}" id="surname"
+                       th:placeholder="#{authorization.surname}"
+                       class="input">
+                <div style="color:red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname error
+                </div>
+            </div>
+
+            <div>
+                <label for="phoneNumber" th:text="#{authorization.phoneNumber}">Enter phoneNumber</label>
+                <input type="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" id="phoneNumber"
+                       th:placeholder="#{authorization.phoneNumber}"
+                       class="input">
+                <div style="color:red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone
+                    number error
+                </div>
+            </div>
+            <div>
+                <label for="email" th:text="#{authorization.email}">Enter email</label>
+                <input type="text" name="email" id="email" th:placeholder="#{authorization.email}" class="input">
+                <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
+            </div>
+            <button type="submit" th:text="#{authorization.button}" id="form_signUp_button">Registration</button>
+        </form>
+    </div>
+    <footer id="footer_other" th:insert="blocks/footer::footer"></footer>
+</div>
+</body>
+</html>

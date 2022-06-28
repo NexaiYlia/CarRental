@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.orh/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+    <div><h1>List orders</h1></div>
+    <div>
+        <a class="h3" th:href="@{/orders/new}" th:text="#{orderInfo.add}">Add new order</a>
+    </div>
+
+    <form th:method="GET" th:action="@{/orders/searchOrderByStatus/1}" class="formForSearch">
+       <h1 th:text="#{orderInfo.st}">Select orders by status:</h1>
+        <select name="status">
+            <option th:each="status : ${T(com.academy.car_rental.model.entity.type.OrderStatus).values()}"
+                    th:value="${status}" th:text="${status}"></option>
+        </select>
+        <input type="hidden" name="pageNumber" value="1"/>
+        <input type="hidden" name="sortField" value="id"/>
+        <input type="hidden" name="sortDirection" value="asc"/>
+        <button type="submit" class="btnSearch" th:text="#{searchOrder.buttonSearch}">Search</button>
+    </form>
+    <form th:method="GET" th:action="@{/orders/searchOrderByDate/1}" class="formForSearch">
+        <h1 th:text="#{orderInfo.d}">Select orders by date:</h1>
+        <input type="date" id="date" name="date"/>
+
+        <input type="hidden" name="sortField" value="id"/>
+        <input type="hidden" name="sortDirection" value="asc"/>
+        <button type="submit" class="btnSearch" th:text="#{searchOrder.buttonSearch}">Search</button>
+    </form>
+    <form th:method="GET" th:action="@{/orders/searchOrdersByUser/1}" class="formForSearch">
+        <h1 th:text="#{orderInfo.u}"> Select orders by User:</h1>
+        <input type="text" id="name" name="name"/>
+
+        <input type="hidden" name="sortField" value="id"/>
+        <input type="hidden" name="sortDirection" value="asc"/>
+        <button type="submit" class="btnSearch" th:text="#{searchOrder.buttonSearch}">Search</button>
+    </form>
+    <form th:method="GET" th:action="@{/orders/1}" class="formForSearch">
+        <input type="hidden" name="sortField" value="id"/>
+        <input type="hidden" name="sortDirection" value="asc"/>
+        <button type="submit" class="btnSearch" th:text="#{searchOrder.clean}">Clean</button>
+    </form>
+    <div>
+        <table class="table table-bordered">
+            <thead class="tread-green">
+            <tr>
+                <th th:text="#{orderInfo.id}">Id</th>
+                <th th:text="#{orderInfo.startDate}">Start Date</th>
+                <th th:text="#{orderInfo.endDate}">End Date</th>
+                <th th:text="#{orderInfo.user}">User</th>
+                <th th:text="#{orderInfo.car}">Car</th>
+                <th th:text="#{orderInfo.totalCost}">Total cost</th>
+                <th th:text="#{orderInfo.status}">Status</th>
+                <th th:text="#{orderInfo.payments}">Payments</th>
+                <th th:text="#{orderInfo.accidents}">Accidents</th>
+                <th th:text="#{orderInfo.addAccident}">ADD Accidents</th>
+                <th th:text="#{orderInfo.approvedOrder}">Approved order</th>
+                <th th:text="#{orderInfo.cancelOrder}">Cancel order</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="order:${orders}">
+                <tr>
+                    <td>[[${order.id}]]</td>
+                    <td>[[${order.startDate}]]</td>
+                    <td>[[${order.endDate}]]</td>
+                    <td>[[${order.user.getName}]] [[${order.user.getSurname}]]</td>
+                    <td>[[${order.car.getBrand}]] [[${order.car.getModel}]]</td>
+                    <td>[[${order.cost}]]</td>
+                    <td>[[${order.status}]]</td>
+                    <td>
+                        <th:block th:each="payment:${payments}">
+                            <div th:if="${payment.order.getId} eq ${order.id}">
+                                <a th:href="@{'/payments/showPaymentsByOrder/'+${payment.id}}">[[${payment.id}]]</a>
+                            </div>
+                        </th:block>
+                    </td>
+                    <td>
+                        <th:block th:each="accident:${accidents}">
+                            <div th:if="${accident.order.getId} eq ${order.id}">
+                                <a th:href="@{'/accidents/showAccidentByOrder/'+${accident.id}}">[[${accident.id}]]</a>
+                            </div>
+                        </th:block>
+                    </td>
+                    <td><a class="h4" th:href="@{'/accidents/createNew/'+${order.id}}" th:text="#{orderInfo.addAccident}">Add accident</a></td>
+                    <td>
+                        <a class="h4" th:href="@{'/orders/changeStatus/'+${order.id}}" th:text="#{orderInfo.approved}">Approved</a>
+                    </td>
+                    <td>
+                        <a>
+                            <form method="GET" th:action="@{'/orders/canceled/'+${order.id}}">
+                                <input type="text" name="comment" id="comment" class="input"/>
+                                <button type="submit" th:text="#{menu.cancel}" id="btnUsersForAdmin">Cancel</button>
+                            </form>
+                        </a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+    </form>
+
+    <div class="pagination">
+        <a th:text="#{orders.numberOfOrders}" class="bold pagination_item">Number of orders:</a>
+        <a th:text="${page.getTotalElements()}" class="pagination_item">Number Of Elements</a>
+        <a th:text="#{page}" class="bold pagination_item">Page</a>
+        <a th:text="(__${page.number}__+1)"/>
+        <span>of </span>
+        <a th:text="${page.totalPages}" class="pagination_item"></a>
+        <span th:each="i : ${#numbers.sequence(1,__${page.totalPages}__)}">
+                <a th:href="@{'/orders/'+${i}+'?sortField='+${sortField}+'&'
+                +'sortDirection='+${sortDirection}}" class="bold pagination_item">[[${i}]]</a>
+            </span>
+        <a th:unless="${pageNumber}==(__${page.totalPages}__)" th:href="@{'/orders/'+${pageNumber+1}+'?sortField='+${sortField}+'&'
+                +'sortDirection='+${sortDirection}}" class="bold pagination_item" th:text="#{next}">Next</a>
+        <a th:if="${pageNumber}<(__${page.totalPages}__)" th:href="@{'/orders/'+${page.totalPages}+'?sortField='+${sortField}+'&'
+                +'sortDirection='+${sortDirection}}" class="bold pagination_item" th:text="#{last}">Last</a>
+        <a th:if="${pageNumber}>1" th:href="@{'/orders/'+1+'?sortField='+${sortField}+'&'
+                +'sortDirection='+${sortDirection}}" class="bold pagination_item" th:text="#{first}">First</a>
+        <a th:unless="${pageNumber}==1" th:href="@{'/orders/' + ${pageNumber-1}+'?sortField='+${sortField}+'&'
+                +'sortDirection='+${sortDirection}}" class="bold pagination_item" th:text="#{previous}">Previous</a>
+    </div>
+</div>
+<footer th:insert="blocks/footer::footer"></footer>
+</body>
+</html>
+

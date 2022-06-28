@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.orh/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Car</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+    <div class="text-center"><h2></h2></div>
+    <form th:action="@{/comments/update}" method="post" th:object="${comment}">
+        <div class="">
+            <div class="">
+                <label class=""><b>Enter comment:</b></label>
+                <div class="">
+                    <input type="text" th:field="*{content}" class="form-control">
+                </div>
+            </div>
+            <input type="hidden" name="commentId" th:value="${comment.id}"/>
+            <input type="hidden" name="userId" th:value="${comment.user.getId()}"/>
+            <button type="submit" class="btn btn-primary m-2"> Save</button>
+        </div>
+    </form>
+    <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()"> Cancel</button>
+</div>
+<script type="text/javascript">
+                    function clearFilter(){
+                    window.location="@{/comments}"}
+
+
+
+</script>
+<footer th:insert="blocks/footer::footer"></footer>
+</body>
+</html>

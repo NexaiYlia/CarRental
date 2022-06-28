@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.orh/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="#{app.title}">Car Rental</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<div class="conteiner">
+    <div class="pageHead">
+        <div class="headerPageTable">
+            <div th:insert="blocks/header::header"></div>
+            <div th:insert="blocks/menu::menu"></div>
+        </div>
+    </div>
+    <div class="bodyExceptHeader">
+        <form th:method="POST" th:action="@{/comments/createComment}" th:object="${comment}">
+            <div th:unless="${error}==null">
+                <p>
+                    <a th:text="${error}"></a>
+                </p>
+            </div>
+            <div>
+                <label for="content" th:text="#{comment.enterContent}" class="label">Enter text: </label>
+                <input type="text" name="content" id="content" th:placeholder="#{comment.placeholder}" required
+                       class="input"/>
+            </div>
+            <button type="submit" th:text="#{comment.button}" id="form_signUp_button">ADD</button>
+        </form>
+        </form>
+    </div>
+
+</div>
+<footer th:insert="blocks/footer::footer"></footer>
+</body>
+</html>

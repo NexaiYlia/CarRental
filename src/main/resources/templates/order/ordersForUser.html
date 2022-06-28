@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.orh/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{orderInfo.title}">Orders</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+    <div><h1 th:text="#{orderInfo.listOfOrders}">My list of orders</h1></div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="tread-green">
+            <tr>
+                <th th:text="#{orderInfo.id}">Id</th>
+                <th th:text="#{orderInfo.startDate}">Start Date</th>
+                <th th:text="#{orderInfo.endDate}">End Date</th>
+                <th th:text="#{orderInfo.car}">Car</th>
+                <th th:text="#{orderInfo.cost}">Total cost</th>
+                <th th:text="#{orderInfo.status}">Status</th>
+                <th th:text="#{orderInfo.accidents}">Accidents</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="order:${orders}">
+                <tr>
+                    <td>[[${order.id}]]</td>
+                    <td>[[${order.startDate}]]</td>
+                    <td>[[${order.endDate}]]</td>
+                    <td>[[${order.car.getBrand}]] [[${order.car.getModel}]]</td>
+                    <td>[[${order.cost}]]</td>
+                    <td>[[${order.status}]]</td>
+                    <td>
+                        <th:block th:each="accident:${accidents}">
+                            <div th:if="${accident.order.getId} eq ${order.id}">
+                                <a th:href="@{'/accidents/showAccidentByOrder/'+${accident.id}}">[[${accident.id}]]</a>
+                            </div>
+                        </th:block>
+                    </td>
+                    <td>
+                        <a>
+                            <form method="GET" th:action="@{'/orders/canceledByUser/'+${order.id}}">
+                                <button type="submit" th:text="#{menu.cancel}" id="btnUsersForAdmin">cancel</button>
+                            </form>
+                        </a>
+                    </td>
+
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+<footer th:insert="blocks/footer::footer"></footer>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+    <div class="userInfo" id="userInfo">
+
+        <div th:if="${message}" class="alert alert-success text-center">
+            <h1>[[${message}]]</h1>
+        </div>
+        <div>
+            <div>
+                <p><a th:text="#{userInfo.name}">Name: </a>
+                    <strong th:text="${user.name}" id="name"></strong></p>
+            </div>
+            <div>
+                <p><a th:text="#{userInfo.surname}">Surname: </a>
+                    <strong th:text="${user.surname}" id="surname"></strong></p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <p><a th:text="#{userInfo.phone}">Phone number:</a>
+                    <strong th:text="${user.phoneNumber}" id="phoneNumber"></strong></p>
+            </div>
+            <div>
+                <p><a th:text="#{userInfo.email}">Email</a>
+                    <strong th:text="${user.email}" id="email"></strong></p>
+            </div>
+            <div>
+                <p><a th:text="#{userInfo.roles}">Role</a>
+                    <strong th:text="${user.roles}" id="role"></strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modalForChangePassword" id="modalForChangePassword">
+    <div class="modalForChangePassword_content ">
+        <form th:method="GET" th:action="@{'/users/updatePasswordOfUser/'+${user.id}}">
+            <div>
+                <label for="password" th:text="#{profile.password}" class="label">If you want to change your password, enter it in the box below and then click save.</label>
+                <input type="password" name="password" id="password" th:placeholder="#{login.password}" required
+                       class="input"/>
+            </div>
+            <button type="submit" class="btnForUser" th:text="#{save}">Save</button>
+        </form>
+    </div>
+</div>
+<button type="button" class="form_login_button" onclick="cancelForm()" th:text="#{userInfo.cancel}"> Cancel</button>
+
+<script type="text/javascript">
+    function cancelForm(){
+    window.location="[[@{/}]]";
+    }
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<footer th:insert="blocks/footer::footer" id="footer_other"></footer>
+</body>
+</html>

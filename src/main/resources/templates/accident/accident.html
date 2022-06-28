@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.orh/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Accidents of order №[[${order.id}]]</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+
+    <th:block th:each="accident:${accidents}">
+        <div class="accidentInfo" id="accidentInfo">
+            <div>
+                <div>
+                    <p><a th:text="#{accidentInfo.id}">Number of accident: </a>
+                        <strong th:text="${accident.id}" id="id"></strong></p>
+                </div>
+                <div>
+                    <p><a th:text="#{accidentInfo.status}">Date of accident: </a>
+                        <strong th:text="${accident.date}" id="date"></strong></p>
+                </div>
+
+                <div>
+                    <p><a th:text="#{accidentInfo.description}">Description:</a>
+                        <strong th:text="${accident.description}" id="startDate"></strong></p>
+                </div>
+                <div>
+                    <p><a th:text="#{accidentInfo.cost}">Cost:</a>
+                        <strong th:text="${accident.cost}" id="cost"></strong></p>
+                </div>
+                <div>
+                    <p><a th:text="#{accidentInfo.car}">Car:</a>
+                        <strong th:text="${accident.order.car.getBrand}" id="brand"></strong>
+                        <strong th:text="${accident.order.car.getModel}" id="model"></strong>
+                    </p>
+                </div>
+                <div>
+                    <p><a th:text="#{accidentInfo.user}">User:</a>
+                        <strong th:text="${accident.order.user.getName}" id="userName"></strong>
+                        <strong th:text="${accident.order.user.getSurname}" id="userSurname"></strong></p>
+                </div>
+            </div>
+        </div>
+        ---------------------------------------------------------------------------------------------------------------------------
+        <p></p>
+    </th:block>
+</div>
+<h1 th:text="#{accidentInfo.costOf}">TOTAL COST OF ACCIDENTS:<strong th:text="${totalCost}" id="totalCost"></strong></h1>
+
+<th:block th:each="accident:${accidents}">
+    <div th:if="${accident.isPaid} eq true">
+        <h1 th:text="#{accidentInfo.paid1}"> Accident №[[${accident.id}]] is paid:[[${accident.isPaid}]]</a></h1>
+    </div>
+    <div th:unless="${accident.isPaid} eq true">
+        <h1 th:text="#{accidentInfo.paid2}"> Accident №[[${accident.id}]] isn't paid yet.</a></h1>
+    </div>
+</th:block>
+
+
+<div sec:authorize="hasRole('ROLE_USER')">
+
+    <form method="GET" th:action="@{/payments/accident/new}">
+        <input type="hidden" name="totalCost" th:value="*{totalCost}"/>
+        <input type="hidden" name="orderId" th:value="*{order.id}"/>
+        <button type="submit" th:text="#{payment.pay}" id="btnUsersForAdmin">Pay</button>
+    </form>
+
+</div>
+<div sec:authorize="hasRole('ROLE_USER')">
+    <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()" th:text="#{payment.cancel}"> Cancel
+    </button>
+</div>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    <form method="GET" th:action="@{'/orders/1'}">
+        <input type="hidden" name="sortField" value="id"/>
+        <input type="hidden" name="sortDirection" value="asc"/>
+        <button type="submit" th:text="#{menu.back}" id="btnUsersForAdmin">Back</button>
+    </form>
+</div>
+
+<div sec:authorize="hasRole('ROLE_USER')">
+
+    <script type="text/javascript">
+    function cancelForm(){
+    window.location="[[@{/orders/ordersForUser}]]";
+    }
+
+
+
+
+    </script>
+</div>
+
+<footer th:insert="blocks/footer::footer"></footer>
+</body>
+</html>

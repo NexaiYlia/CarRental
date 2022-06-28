@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+	padding: 0;
+	margin: 0;
+  font-family: 'Roboto', sans-serif;
+	color: black;
+}
+
+body {
+  background-color: #e3e6e8;
+	background-position: center;
+  background-repeat: no-repeat;
+	background-size: cover;
+  background-attachment: fixed;
+	height: 100vh;
+}
+
+/* .logo {
+	border: solid;
+	border-color: red;
+} */
+
+.conteiner {
+	width: 70%;
+	margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	color: black;
+}
+
+a:hover {
+	color: #5277b3;
+	transition: 0.3s;
+}
+
+.error_img {
+	display: block;
+	margin: 0 auto;
+}
+
+.error_text {
+	text-align: center;
+	justify-content: center;
+	padding-top: 2em;
+}
+
+.headOfPage {
+		text-align: center;
+}
+
+.SectionText {
+	width: 70%;
+	text-indent: 1.5em;
+	text-align: justify;
+	display: block;
+	margin: 0 auto;
+}
+#btnUsersForAdmin {
+	background-color: #e3e6e8;
+	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	color: black;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+	margin-right: 1em;
+}
+
+#btnUsersForAdmin:hover {
+	color: #5277b3;
+	transition: 0.3s;
+}
+#btnOrdersForAdmin:hover {
+	color: #5277b3;
+	transition: 0.3s;
+}
+#btnOrdersForAdmin
+
+.menu-main {
+	/* border: solid;
+	border-color: red; */
+    padding: 10px 30px;
+    margin: 0;
+    font-size: 16px;
+		font-weight: bold;
+    text-align: right;
+    position: relative;
+}
+
+.menu-main li {
+	display: inline-block;
+}
+
+.menu-main a {
+	/* border: solid;
+	border-color: red; */
+	display: inline-block;
+  margin: 0.5em;
+  /* padding: 10px 10px; */
+  position: relative;
+}
+
+.main-content {
+    width: 100%;
+    margin: 0 auto 50px;
+    text-align: center;
+}
+
+.main-content h1 {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	font-size: 38px;
+}
+
+.footer_main {
+    list-style: none;
+    margin: 0;
+		margin-top: 1em;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    background: grey;
+		background: linear-gradient(to bottom, #e3e6e8, 20%,rgba(255,255,255,0.5));
+		/* padding: 1em; /* Поля вокруг текста */ */
+		width: 100%;
+}
+
+.carInfo {
+	display: flex;
+}
+
+.carImg_wrap {
+	width: 66%;
+	margin-right: 2em;
+	margin-left: 5em;
+}
+.car_img {
+
+}
+
+.car_descr {
+
+}
+
+/* .footer_main li {display: inline-block;}
+.footer_main a {
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 15px;
+    padding: 10px 10px;
+    position: relative;
+} */
+
+#footer_login,
+#footer_signUp,
+#footer_registration,
+#footer_users,
+#footer_other {
+	position: fixed;
+	left: 15%; bottom: 0;
+	width: 70%;
+}
+
+.choose_type {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.choose_item {
+	height: 20em;
+	width: 25em;
+	margin: 5px;
+	background-color: white;
+	display: inline-flex;
+	justify-content: center;
+}
+
+.choose_item a:hover {
+	color: #5277b3;
+	transition: 0.6s;
+	transform: scale(1.2);
+}
+
+.choose_item_img {
+	display: block;
+	margin-top: 2.5em;
+	width: auto;
+	height: 13em;
+}
+
+.car_img {
+	width: 100%;
+}
+
+.choose_item_dscr {
+	display: inline-block;
+    margin-top: 0.7em;
+}
+
+.choose_brand {
+	width: 70%;
+	display: block;
+	margin: 0 auto;
+}
+
+.choose_brand_item {
+	/* border: solid;
+	border-color: red; */
+	height: 15em;
+	width: 15em;
+	margin: 5px;
+	background-color: white;
+	display: inline-flex;
+	justify-content: center;
+}
+
+.choose_brand_img {
+	margin-top: 25%;
+	width: 10em;
+	height: 10em;
+}
+
+.choose_brand_item a:hover {
+	color: #5277b3;
+	transition: 0.6s;
+	transform: scale(1.2);
+}
+
+//////////////////////////
+https://www.w3schools.com/howto/howto_css_login_form.asp
+
+/* Bordered form */
+form {
+    border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+label {
+    width: 60%;
+    display: inline-block;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #5277b3;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+		display: block;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+/* form_rent_price*/
+#form_rent_price {
+	/* border: solid;
+	border-color: red; */
+    width: 20%;
+    margin: 0 auto;
+}
+
+#form_rent_price_button {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* form_login */
+.form_login_button {
+    width: 40%;
+    display: block;
+    margin: 0 auto;
+}
+
+.form_login {
+	width: 30%;
+	margin: 0 auto;
+}
+/* form_signUp */
+#form_signUp_button {
+    width: 30%;
+    display: block;
+    margin: 0 auto;
+}
+
+#form_signUp {
+	/* width: 50%; */
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+}
+.header {
+	/* border: solid;
+	border-color: red; */
+	display: flex;
+	flex-direction: row-reverse;
+	margin: 0 auto;
+	margin-top: 1em;
+}
+
+.btnsLang_wrap {
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: row;
+	align-items: center;
+}
+
+.headerTittle {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	align-content: center;
+	margin: 0 auto;
+	margin-left: auto;
+	justify-content: center;
+	text-align: center;
+	background: linear-gradient(rgba(255,255,255,0.5),#e3e6e8);
+	background-color: rgba(255,255,255,0.5);
+	/* padding: 1em; /* Поля вокруг текста */ */
+	width: 100%;
+	/* border: solid;
+	border-color: red; */
+}
+
+.pageHead {
+	align-content: center;
+	margin: 0 auto;
+}
+
+.remember {
+	margin: 0 auto;
+}
+
+.checkbox {
+	display: inline-flex;
+	width: 2em;
+}
+
+.checkbox_label {
+	display: inline-flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.homePageBtn {
+	margin: 0 auto;
+	width: 10em;
+	margin-right: 2.3em;
+}
+
+.addCarBtn {
+	margin: 0 auto;
+	width: 10em;
+}
+
+/* CarsForUser */
+.show_item_wrap {
+	display: flex;
+}
+
+.show_item {
+	background-color: white;
+	/* border: solid;
+	border-color: red; */
+	flex: 1 1 auto;
+	margin: 0 0.3em;
+}
+
+.show_item a:hover {
+	/* color: #5277b3;
+	transition: 0.6s;
+	transform: scale(1.2); */
+}
+
+.show_item_img {
+	display: flex;
+  margin-top: 0;
+  width: 90%;
+  padding-top: 5%;
+  padding-left: 5%;
+
+}
+
+.car_name {
+	display: flex;
+	justify-content: flex-start;
+	font-size: 24px;
+	font-weight: bold;
+	margin-left: 0.4em;
+	margin-top: 0.3em;
+}
+
+.car_desc {
+	display: flex;
+	justify-content: flex-start;
+	font-size: 16px;
+	margin-left: 0.7em;
+	margin-top: 0.3em;
+}
+
+.car_desc_title {
+		font-weight: bold;
+}
+
+.item_buttons {
+	display: flex;
+}
+
+.button {
+	background-color: #5277b3;
+	color: white;
+	padding: 10px 0;
+	border: none;
+	cursor: pointer;
+	width: 20%;
+	flex: auto;
+	margin: 0.3em 0.3em;
+}
+
+/* Add a hover effect for buttons */
+.button:hover {
+		color: white;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.pagination {
+	margin-right: 2em;
+	margin-bottom: 1em;
+	display: flex;
+	justify-content: flex-end;
+	align-items: baseline;
+}
+
+.pagination_item {
+  margin: 0 3px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.map {
+	display: block;
+}
+
+.map_frame {
+	width: 70%;
+	height: 30em;
+	display: flex;
+	margin: 0 auto;
+	margin-right: 3em;
+	margin-left: 1em;
+}
+
+.map {
+	display: flex;
+	flex-direction: row;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.orh/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Car</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+    <div class="text-center"><h2></h2></div>
+    <form th:action="@{/cars/update}" method="post" th:object="${car}" enctype="multipart/form-data">
+        <div class="border border-secondary rounded p-3">
+
+            <div class="carImg">
+                <div th:if="${car.getImg()==null}">
+                    <img class="thumbnail" alt="Image Preview"/>
+                    <label for="carImg" class="inputFileBtn" th:text="#{editCar.addPhoto}">Add photo</label>
+                </div>
+                <div th:unless="${car.getImg()}==null">
+                    <img th:src="@{${car.imagePath}}" class="thumbnail">
+                    <label for="carImg" class="inputFileBtn" th:text="#{editCar.changePhoto}">Change photo</label>
+                </div>
+                </p>
+
+
+                <input type="file" name="carImg" id="carImg" value="Preview" accept="image/png, image/jpeg"
+                       class="inputFile">
+            </div>
+
+            <div class="">
+                <label class="" th:text="#{editCar.brand}"><b>Enter car brand:</b></label>
+                <div class="">
+                    <input type="text" th:placeholder="#{car.placeholder}" th:field="*{brand}" class="form-control">
+                </div>
+            </div>
+
+            <div class="">
+                <label class="" th:text="#{editCar.model}"><b>Enter car model:</b></label>
+                <div class="col-sm-8">
+                    <input type="text" th:placeholder="#{car.placeholder}" th:field="*{model}" class="form-control">
+                </div>
+            </div>
+
+
+            <div class="">
+                <label class="" th:text="#{editCar.year}"><b>Enter the year of manufacture of the car:</b></label>
+                <div class="col-sm-8">
+                    <input type="text" th:placeholder="#{car.placeholder}" th:field="*{manufacturedYear}"
+                           class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="" th:text="#{editCar.engineType}"><b>Select vehicle engine type:</b></label>
+                <select name="engineType">
+                    <option th:each="engineType : ${T(com.academy.car_rental.model.entity.type.EngineType).values()}"
+                            th:value="${engineType}" th:text="${engineType}"></option>
+                </select>
+            </div>
+
+            <div class="">
+                <label class="" th:text="#{editCar.gearbox}"><b>Select the type of vehicle gearbox:</b></label>
+                <div>
+                    <select name="gearbox">
+                        <option th:each="gearbox : ${T(com.academy.car_rental.model.entity.type.GearboxType).values()}"
+                                th:value="${gearbox}" th:text="${gearbox}"></option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="">
+                <label class="" th:text="#{editCar.carType}"><b>Enter car class:</b></label>
+                <div>
+                    <select name=" carType">
+                        <option th:each="carType : ${T(com.academy.car_rental.model.entity.type.CarType).values()}"
+                                th:value="${carType}" th:text="${carType}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label class="" th:text="#{editCar.pricePerDay}"><b>Enter the cost of car rental:</b></label>
+                <div>
+                    <input type="text" th:placeholder="#{car.placeholder}" th:field="*{pricePerDay}"
+                           class="form-control">
+                </div>
+            </div>
+
+        </div>
+
+
+        <input type="hidden" name="id" th:value="${car.id}" required/>
+        <button type="submit" class="btn btn-primary m-2" th:text="#{searchOrder.buttonSearch}"> Save</button>
+    </form>
+    <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()" th:text="#{save}">
+        Cancel
+    </button>
+</div>
+<script src="/js/car-settings.js"></script>
+<footer th:insert="blocks/footer::footer"></footer>
+</body>
+</html>

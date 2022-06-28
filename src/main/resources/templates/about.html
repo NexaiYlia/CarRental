@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.orh/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="#{app.title}">About us</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+    <h1 class="headOfPage" th:text="#{h1.aboutUs}"></h1>
+    <sec class="SectionText" th:text="#{text.aboutUsSEC1}">
+    </sec>
+    <sec class="SectionText" th:text="#{text.aboutUsSEC2}">
+    </sec>
+
+    <sec class="SectionText" th:text="#{text.aboutUsSEC4}">
+    </sec>
+    <footer id="footer_other" th:insert="blocks/footer::footer"></footer>
+</div>
+</body>
+</html>

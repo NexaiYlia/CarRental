@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.orh/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage payments</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+    <div><h1 th:text="#{paymentInfo.list}">List payments</h1></div>
+
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+    <form th:method="GET" th:action="@{/payments/searchPaymentsByDate}" class="formForSearch">
+        <h2 th:text="#{paymentInfo.byDate}"> Select payments by date:</h2>
+        <input type="date" id="date" name="date"/>
+        <button type="submit" class="btnSearch" th:text="#{searchOrder.buttonSearch}">Search</button>
+    </form>
+    <div>
+    </div>
+
+    <div>
+        <table class="table table-bordered">
+            <thead class="tread-green">
+            <tr>
+                <th th:text="#{paymentInfo.id}">Id</th>
+                <th th:text="#{paymentInfo.order}">Order</th>
+                <th th:text="#{paymentInfo.totalPrice}">Total Price</th>
+                <th th:text="#{paymentInfo.date}">Payment Date</th>
+
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="payment:${payments}">
+                <tr>
+                    <td>[[${payment.id}]]</td>
+                    <td>[[${payment.order.getStartDate}]] [[${payment.order.getEndDate}]]
+                        [[${payment.order.getUser.getName}]] [[${payment.order.getUser.getSurname}]]
+                    </td>
+                    <td>[[${payment.status}]]</td>
+                    <td>[[${payment.totalPrice}]]</td>
+                    <td>[[${payment.paymentDate}]]</td>
+                    <td></td>
+
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+<footer th:insert="blocks/footer::footer"></footer>
+</body>
+</html>
+
