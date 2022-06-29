@@ -18,5 +18,17 @@ In the project I used tools such as Spring MVC, Spring Security,AOP, MySql, FlyW
 <p align="justify"> 
 <img src="https://user-images.githubusercontent.com/88191742/176380037-de219db7-7b53-46a4-be10-1cd781ed50ee.png" alt="db_schema">
 </p>
+ 
+<h3>1.4 Test</h3>
+<p align="justify">
+In the project I used tools such as Spring MVC, Spring Security,AOP, MySql, FlyWay, Logback, JUnit, Mockito, Lombok, Thymeleaf, exception handling, localization and internationalization. Created my own exceptions and views for them.
+ In the project I used tools such as Spring MVC, Spring Security,AOP, MySql, FlyWay, Logback, JUnit, Mockito, Lombok, Thymeleaf, exception handling, localization and internationalization. Created my own exceptions and views for them.
+ In the project I used tools such as Spring MVC, Spring Security,AOP, MySql, FlyWay, Logback, JUnit, Mockito, Lombok, Thymeleaf, exception handling, localization and internationalization. Created my own exceptions and views for them.
+ In the project I used tools such as Spring MVC, Spring Security,AOP, MySql, FlyWay, Logback, JUnit, Mockito, Lombok, Thymeleaf, exception handling, localization and internationalization. Created my own exceptions and views for them.
+</p>
+ 
+<h3>1.5 Test IMG</h3>
+<p align="justify">
+<img src="https://user-images.githubusercontent.com/88191742/176383617-b8d466a8-c604-400f-bb54-f49719e4033c.jpg" alt="db_schema">
 </body>
 </html>
