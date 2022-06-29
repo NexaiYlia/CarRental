@@ -19,34 +19,30 @@
         <div th:if="${message}">
             [[${message}]]
         </div>
-        <div class="show_item_wrap">
-            <th:block th:each="car:${cars}">
-                <div class="show_item">
-                    <a th:href="@{'/cars/details/'+${car.id}}">
-                        <img th:src="@{${car.imagePath}}" class="show_item_img" alt="car"/>
-                    </a>
-                    <a th:href="@{'/cars/details/'+${car.id}}">
-                        <div class="car_name">[[${car.brand}]] [[${car.model}]]</div>
-                    </a>
-                    <div class="car_desc"><span class="car_desc_title">Rent price:&nbsp</span>[[${car.pricePerDay}]]
-                    </div>
-                    <div class="item_buttons">
-                        <a class="button" th:href="@{'/cars/details/'+${car.id}}"
-                           th:text="#{carInfo.details}">Details</a>
-
-                        <div sec:authorize="hasRole('ROLE_USER')">
-                            <a class="button" th:href="@{'/cars/rent/'+${car.id}}" th:text="#{carInfo.rent}">Rent</a>
+        <div class="items_wrap">
+            <div class="show_item_wrap">
+                <th:block th:each="car:${cars}">
+                    <div class="show_item">
+                        <a th:href="@{'/cars/details/'+${car.id}}">
+                            <img th:src="@{${car.imagePath}}" class="show_item_img" alt="car"/>
+                        </a>
+                        <a th:href="@{'/cars/details/'+${car.id}}">
+                            <div class="car_name">[[${car.brand}]] [[${car.model}]]</div>
+                        </a>
+                        <span class="car_desc">
+                            <span class="car_desc_title">Rent price:&nbsp</span>[[${car.pricePerDay}]] $
+                        </span>
+                        <div class="item_buttons">
+                            <a class="button" id="car_buttons" th:href="@{'/cars/details/'+${car.id}}"
+                               th:text="#{carInfo.details}">Details</a>
+                            <div sec:authorize="hasRole('ROLE_USER')">
+                                <a class="button"id="car_buttons" th:href="@{'/cars/rent/'+${car.id}}" th:text="#{carInfo.rent}">Rent</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </th:block>
+                </th:block>
+            </div>
         </div>
-        <div class="homePageBtn">
-            <form th:method="GET" th:action="@{/}">
-                <button type="submit" th:text="#{menu.home}" class="form_login_button"></button>
-            </form>
-        </div>
-        <footer th:insert="blocks/footer::footer" id="footer_other" class="footer_main"></footer>
     </div>
 </div>
 <script type="text/javascript">

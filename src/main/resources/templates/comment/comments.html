@@ -4,7 +4,7 @@
       xmlns:sec="http://www.thymeleaf.orh/extras/spring-security" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Manage cars</title>
+    <title>Comments</title>
     <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
 </head>
@@ -12,17 +12,21 @@
 <div class="conteiner">
     <div th:insert="blocks/header::header"></div>
     <div th:insert="blocks/menu::menu"></div>
-    <div><h1 th:text="#{commentInfo.com}">List comments</h1></div>
+    <div class="main-content"><h1 th:text="#{commentInfo.com}">List comments</h1></div>
     <div>
-        <a class="h3" th:href="@{/comments/new}" th:text="#{commentInfo.add}">Add new comment</a>
+        <div id="AddBtn">
+            <form th:method="GET" th:action="@{/comments/new}">
+                <button type="submit" th:text="#{commentInfo.add}">Add new comment</button>
+            </form>
+        </div>
     </div>
     <div>&nbsp</div>
-    <div th:if="${message}" class="alert alert-success text-center">
+    <div style="color: green" th:if="${message}" class="alert alert-success text-center">
         [[${message}]]
     </div>
     <div>
-        <div>
-            <table class="table table-bordered">
+        <div class="table">
+            <table width="80%">
                 <thead class="tread-green">
                 <tr>
                     <th th:text="#{commentInfo.id}">Id</th>
@@ -35,15 +39,24 @@
                 <tbody>
                 <th:block th:each="comment:${comments}">
                     <tr>
-                        <td>[[${comment.id}]]</td>
-                        <td>[[${comment.user.getName}]]</td>
-                        <td>[[${comment.date}]]</td>
-                        <td>[[${comment.content}]]</td>
-                        <td>
-                            <a class="h4" th:href="@{'/comments/edit/'+${comment.id}}" th:text="#{commentInfo.edit}">edit</a>
-                            <a class="h4" th:href="@{'/comments/delete/'+${comment.id}}" th:text="#{commentInfo.delete}">delete</a>
+                        <td align="center" height="30">[[${comment.id}]]</td>
+                        <td align="center" height="30">[[${comment.user.getName}]]</td>
+                        <td align="center" height="30">[[${comment.date}]]</td>
+                        <td align="center" height="30">[[${comment.content}]]</td>
+                        <td align="center" height="30">
+                            <div id="tableBtn">
+                                <form th:method="GET" th:action="@{'/comments/edit/'+${comment.id}}">
+                                    <button type="submit" th:text="#{commentInfo.edit}">edit</button>
+                                </form>
+                            </div>
                         </td>
-
+                        <td align="center" height="30">
+                            <div id="tableBtn">
+                                <form th:method="GET" th:action="@{'/comments/delete/'+${comment.id}}">
+                                    <button type="submit" th:text="#{commentInfo.delete}">delete</button>
+                                </form>
+                            </div>
+                        </td>
                     </tr>
                 </th:block>
                 </tbody>
@@ -54,6 +67,9 @@
 <script type="text/javascript">
     function clearFilter(){
     window.location="@{/}"}
+
+
+
 
 
 </script>

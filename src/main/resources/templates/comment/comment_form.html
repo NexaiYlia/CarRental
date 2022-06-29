@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title th:text="#{app.title}">Car Rental</title>
+    <title th:text="#{app.title}">Comment</title>
     <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 <div class="conteiner">
@@ -26,16 +26,16 @@
                 </p>
             </div>
             <div>
-                <label for="content" th:text="#{comment.enterContent}" class="label">Enter text: </label>
-                <input type="text" name="content" id="content" th:placeholder="#{comment.placeholder}" required
-                       class="input"/>
+                <h3><label for="content" th:text="#{comment.enterContent}" class="CommentHead">Enter text:</label></h3>
+                <textarea type="text" name="content" id="content" th:placeholder="#{comment.placeholder}" required
+                       class="input" rows="15" cols="100"></textarea>
             </div>
             <button type="submit" th:text="#{comment.button}" id="form_signUp_button">ADD</button>
         </form>
         </form>
     </div>
-
+    <footer th:insert="blocks/footer::footer" id="footer_other"></footer>
 </div>
-<footer th:insert="blocks/footer::footer"></footer>
+
 </body>
 </html>

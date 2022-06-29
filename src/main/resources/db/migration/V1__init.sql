@@ -1,7 +1,7 @@
-CREATE TABLE IF NOT EXISTS carrental.roles
+CREATE TABLE IF NOT EXISTS carrental.users_roles
 (
-    id    INT         NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name  VARCHAR(50) NOT NULL
+    user_id    INT         NOT NULL PRIMARY KEY ,
+    roles  VARCHAR(255) NOT NULL DEFAULT 'ROLE_USER'
 );
 
 CREATE TABLE IF NOT EXISTS carrental.users

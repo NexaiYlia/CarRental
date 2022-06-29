@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title th:text="#{app.title}">Contacts</title>
+    <title th:text="#{app.titleContact}">Contacts</title>
     <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
     <link rel="stylesheet" href="./css/main.css">
 </head>
@@ -25,7 +25,7 @@
             <h3 th:text="#{h3.Phone}">Phone us:</h3>
             <div><a href="tel:+375336573265">+375(33)657-32-65</a></div>
             <h3 th:text="#{h3.Adress}">Visit us:</h3>
-            <div><a href="https://yandex.by/maps/-/CCUNUOdmtD">проспект Янки Купалы, 87/2</a></div>
+            <div><a href="https://yandex.by/maps/-/CCUNUOdmtD" th:text="#{Adress}">проспект Янки Купалы, 87/2</a></div>
 
         </div>
 

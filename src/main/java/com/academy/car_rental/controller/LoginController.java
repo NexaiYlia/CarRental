@@ -2,25 +2,21 @@ package com.academy.car_rental.controller;
 
 import com.academy.car_rental.dto.UserDto;
 import com.academy.car_rental.exception.UserException;
-import com.academy.car_rental.model.entity.User;
 import com.academy.car_rental.service.UserService;
 import com.academy.car_rental.validator.UserEmailAndUsernameValidator;
-import jdk.jshell.spi.ExecutionControl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 

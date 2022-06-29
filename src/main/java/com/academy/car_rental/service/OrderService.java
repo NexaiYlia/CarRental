@@ -3,7 +3,6 @@ package com.academy.car_rental.service;
 import com.academy.car_rental.exception.ServiceException;
 import com.academy.car_rental.model.entity.Car;
 import com.academy.car_rental.model.entity.Order;
-import com.academy.car_rental.model.entity.Payment;
 import com.academy.car_rental.model.entity.User;
 import com.academy.car_rental.model.entity.type.OrderStatus;
 import org.springframework.data.domain.Page;

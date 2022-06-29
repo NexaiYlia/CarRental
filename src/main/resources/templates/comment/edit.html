@@ -4,7 +4,7 @@
       xmlns:sec="http://www.thymeleaf.orh/extras/spring-security" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Car</title>
+    <title>Edit car</title>
     <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
@@ -30,12 +30,12 @@
     <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()"> Cancel</button>
 </div>
 <script type="text/javascript">
-                    function clearFilter(){
+                    function cancelForm(){
                     window.location="@{/comments}"}
 
 
 
 </script>
-<footer th:insert="blocks/footer::footer"></footer>
+<footer th:insert="blocks/footer::footer" id="footer_other"></footer>
 </body>
 </html>

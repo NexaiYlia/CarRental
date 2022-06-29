@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>[[${pageTitle}]]</title>
+    <title>Car</title>
     <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
 </head>
@@ -19,44 +19,52 @@
         </div>
         <div class="car_descr">
             <div>
-                <p><a th:text="#{carInfo.brand}">Brand:</a>
+                <p><span th:text="#{carInfo.brand}">Brand:</span>
                     <strong th:text="${car.brand}" id="brand" class="carInf"></strong></p>
             </div>
             <div>
-                <p><a th:text="#{carInfo.model}">Model: </a>
+                <p><span th:text="#{carInfo.model}">Model:</span>
                     <strong th:text="${car.model}" id="model" class="carInf"></strong></p>
             </div>
             <div>
-                <p><a th:text="#{carInfo.engineType}">Engine type:</a>
+                <p><span th:text="#{carInfo.engineType}">Engine type:</span>
                     <strong th:text="${car.engineType}" id="engineType" class="carInf"></strong></p>
             </div>
             <div>
-                <p><a th:text="#{carInfo.carType}">Car Type</a>
+                <p><span th:text="#{carInfo.carType}">Car Type:</span>
                     <strong th:text="${car.carType}" id="carType" class="carInf"></strong></p>
             </div>
             <div>
-                <p><a th:text="#{carInfo.gearbox}">Gearbox: </a>
+                <p><span th:text="#{carInfo.gearbox}">Gearbox:</span>
                     <strong th:text="${car.gearbox}" id="gearbox" class="carInf"></strong></p>
             </div>
             <div>
-                <p><a th:text="#{carInfo.pricePerDay}">Price per day:</a>
-                    <strong th:text="${car.pricePerDay}" id="pricePerDay" class="carInf"></strong></p>
+                <p><span th:text="#{carInfo.pricePerDay}">Price per day:</span>
+                    <strong th:text="${car.pricePerDay}" id="pricePerDay" class="carInf"></strong> $</p>
+            </div>
+        </div>
+        <div class="car_buttons_wrap">
+            <div sec:authorize="hasRole('ROLE_USER')">
+                <form th:method="GET" th:action="@{'/cars/rent/'+${car.id}}">
+                    <button type="submit" id="car_buttons" th:text="#{carInfo.rent}">Back</button>
+                </form>
+<!--                <a class="button" id="car_buttons" th:action="@{'/cars/rent/'+${car.id}}" th:text="#{carInfo.rent}">Rent</a>-->
+                <form th:method="GET" th:action="@{/cars/carsForUser}">
+                    <button type="submit" id="car_buttons" th:text="#{menu.back}">Back</button>
+                </form>
+            </div>
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                <form th:method="GET" th:action="@{/cars/carsForUser}">
+                    <button type="submit" id="car_buttons" th:text="#{menu.back}">Back</button>
+                </form>
+            </div>
+            <div sec:authorize="isAnonymous()">
+                <form th:method="GET" id="car_buttons" th:action="@{/cars/carsForUser}">
+                    <button type="submit" th:text="#{menu.back}">Back</button>
+                </form>
             </div>
         </div>
     </div>
-    <div class="homePageBtn">
-        <div sec:authorize="hasRole('ROLE_USER')">
-            <form th:method="GET" th:action="@{/cars/carsForUser}">
-                <button type="submit" th:text="#{menu.back}">Back</button>
-            </form>
-        </div>
-        <div sec:authorize="hasRole('ROLE_ADMIN')">
-            <form th:method="GET" th:action="@{/cars}">
-                <button type="submit" th:text="#{menu.back}">Back</button>
-            </form>
-        </div>
-    </div>
-
 </div>
 <footer id="footer_other" th:insert="blocks/footer::footer"></footer>
 </body>

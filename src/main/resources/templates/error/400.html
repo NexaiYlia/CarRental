@@ -13,7 +13,7 @@
     <div>
         <header th:insert="blocks/menu::menu"></header>
     </div>
-    <img class="error_img" src="./img/error.png" alt="error">
+    <img class="error_img" src="../img/error.png" alt="error">
     <div class="error_text">
         <h1 th:text="#{error400.name}">Bad request.</h1>
         <h1 th:text="#{error400.text}">Bad request.</h1>
@@ -23,28 +23,3 @@
 </body>
 </html>
 
-<!--<!DOCTYPE html>-->
-<!--<html lang="en"-->
-<!--      xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <link rel="stylesheet" type="text/css" href="/css/main.css"/>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title th:text="#{error400.name}"></title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="pageHead">-->
-<!--    <header th:insert="blocks/header::header"></header>-->
-
-<!--    <div class="headerPageTable">-->
-<!--        <div class="nameOfPage">-->
-<!--            <h1 th:text="#{error400.name}"/>-->
-<!--        </div>-->
-<!--        <header th:insert="blocks/menu::menu"></header>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div class="bodyExceptHeader">-->
-<!--    <a th:text="#{error400.text}">Please sign in</a>-->
-<!--</div>-->
-<!--<footer th:insert="blocks/footer::footer"></footer>-->
-<!--</body>-->
-<!--</html>-->

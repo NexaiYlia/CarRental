@@ -13,7 +13,7 @@
     <div>
         <header th:insert="blocks/menu::menu"></header>
     </div>
-    <img src="./img/error.png" alt="error">
+    <img src="../img/error.png" alt="error">
     <div class="error_text">
         <h1 th:text="#{error403.name}">You don't have permission</h1>
         <h1 th:text="#{error403.text}">You don't have permission</h1>
@@ -22,29 +22,3 @@
 </div>
 </body>
 </html>
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en"-->
-<!--      xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <link rel="stylesheet" type="text/css" href="/header.css"/>-->
-<!--    <link rel="stylesheet" type="text/css" href="/css/error/error.css"/>-->
-<!--    <link rel="stylesheet" type="text/css" href="/css/main.css"/>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title th:text="#{error403.name}"></title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="pageHead">-->
-<!--    <header th:insert="blocks/header::header"></header>-->
-
-<!--    <div class="headerPageTable">-->
-<!--        <div class="nameOfPage">-->
-<!--            <a th:text="${nameOfPage}"/>-->
-<!--        </div>-->
-<!--        <header th:insert="blocks/menu::menu"></header>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<h1 th:text="#{error403.text}">You don't have permission</h1>-->
-<!--<footer th:insert="blocks/footer::footer"></footer>-->
-<!--</body>-->
-<!--</html>-->

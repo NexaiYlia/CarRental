@@ -13,7 +13,7 @@
     <div>
         <header th:insert="blocks/menu::menu"></header>
     </div>
-    <img class="error_img" src="./img/error.png" alt="error">
+    <img class="error_img" src="../img/error.png" alt="error">
     <div class="error_text">
         <h1 th:text="${exceptionName}">_</h1>
         <h1 th:text="#{errorException.text}">_</h1>
@@ -25,32 +25,3 @@
 </div>
 </body>
 </html>
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en"-->
-<!--      xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <link rel="stylesheet" type="text/css" href="/css/main.css"/>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title th:text="#{errorException.name}"></title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div class="pageHead">-->
-<!--    <header th:insert="blocks/header::header"></header>-->
-
-<!--    <div class="headerPageTable">-->
-<!--        <div class="nameOfPage">-->
-<!--            <a th:text="${exceptionName}"/>-->
-<!--        </div>-->
-<!--        <header th:insert="blocks/menu::menu"></header>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div class="bodyExceptHeader">-->
-<!--<h1 th:text="#{errorException.text}">You don't have permission</h1>-->
-<!--    <div th:unless="${error}==null">-->
-<!--        <a th:text="${error}"></a>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<footer th:insert="blocks/footer::footer"></footer>-->
-<!--</body>-->
-<!--</html>-->

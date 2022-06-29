@@ -13,89 +13,77 @@
 <div class="conteiner">
     <div th:insert="blocks/header::header"></div>
     <div th:insert="blocks/menu::menu"></div>
-    <div><h1 th:text="#{make.order}">Make an order</h1></div>
-    <div th:if="${message}" class="alert alert-success text-center">
-        [[${message}]]
-    </div>
-    <div class="bodyExceptHeader">
-        <div class="carInfo" id="carInfo">
+    <div class="main-content">
+        <h1 th:text="#{make.order}" class="pageHead">Make an order</h1>
+        <div th:if="${message}">[[${message}]]</div>
+        <div class="car_details">
             <div class="carImg">
                 <div th:unless="${car.getImg()==null}">
                     <img th:src="@{${car.getImagePath()}}" class="img"/>
                 </div>
             </div>
-            <div>
+            <div class="car_details_wrap">
                 <div>
                     <p><a th:text="#{carInfo.brand}">Brand: </a>
                         <strong th:text="${car.brand}" id="brand" class="carInf"></strong></p>
                 </div>
-            </div>
-            <div>
-                <p><a th:text="#{carInfo.model}">Model: </a>
-                    <strong th:text="${car.model}" id="model" class="carInf"></strong></p>
+                <div>
+                    <p><a th:text="#{carInfo.model}">Model: </a>
+                        <strong th:text="${car.model}" id="model" class="carInf"></strong></p>
+                </div>
+                <div>
+                    <p><a th:text="#{carInfo.engineType}">Engine type:</a>
+                        <strong th:text="${car.engineType}" id="engineType" class="carInf"></strong></p>
+                </div>
+                <div>
+                    <p><a th:text="#{carInfo.carType}">Car Type</a>
+                        <strong th:text="${car.carType}" id="carType" class="carInf"></strong></p>
+                </div>
+                <div>
+                    <p><a th:text="#{carInfo.gearbox}">Gearbox: </a>
+                        <strong th:text="${car.gearbox}" id="gearbox" class="carInf"></strong></p>
+                </div>
+                <div>
+                    <p><a th:text="#{carInfo.pricePerDay}">Price per day:</a>
+                        <strong th:text="${car.pricePerDay}" id="pricePerDay" class="carInf"></strong></p>
+                </div>
             </div>
         </div>
-        <div>
-            <div>
-                <p><a th:text="#{carInfo.engineType}">Engine type:</a>
-                    <strong th:text="${car.engineType}" id="engineType" class="carInf"></strong></p>
-            </div>
-            <div>
-                <p><a th:text="#{carInfo.carType}">Car Type</a>
-                    <strong th:text="${car.carType}" id="carType" class="carInf"></strong></p>
-            </div>
-        </div>
-        <div>
-            <p><a th:text="#{carInfo.gearbox}">Gearbox: </a>
-                <strong th:text="${car.gearbox}" id="gearbox" class="carInf"></strong></p>
-        </div>
-        <div>
-            <p><a th:text="#{carInfo.pricePerDay}">Price per day:</a>
-                <strong th:text="${car.pricePerDay}" id="pricePerDay" class="carInf"></strong></p>
-        </div>
-    </div>
-    <div style="color:red" th:if="${timeEmpty}" class="alert alert-success text-center">
-        [[${timeEmpty}]]
-    </div>
-
-    <form id="form_rent_price" th:action="@{'/orders/cost/'+${car.id}}" method="get">
-        <div class="form-group row">
+        <div style="color:red" th:if="${timeEmpty}">[[${timeEmpty}]]</div>
+        <form id="form_rent_price" method="get" th:action="@{'/orders/cost/'+${car.id}}">
             <div>
                 <label th:text="#{carInfo.startDay}">Start date</label>
                 <div>
-                    <input type="date" id="startDate" name="startDate" th:value="*{startDate}" required/>
+                    <input type="date" id="startDate" name="startDate" th:value="*{startDate}" required class="input"/>
                 </div>
             </div>
             <div>
                 <label th:text="#{carInfo.endDay}">End date</label>
                 <div>
-                    <input type="date" id="endDate" name="endDate" th:value="*{endDate}" required/>
+                    <input type="date" id="endDate" name="endDate" th:value="*{endDate}" required class="input"/>
                 </div>
             </div>
             <div style="color:red" th:if="${cost}">
                 <h1 th:text="#{carInfo.cost}">Total rental price:</h1>
                 <h1>[[${cost}]]</h1>
             </div>
-        </div>
-        <button type="submit" th:text="#{carInfo.calculate}"> Сalculate the cost</button>
-    </form>
-
-    <form th:action="@{'/orders/new/'+${car.id}}" method="get">
-        <input type="hidden" name="startDate" th:value="*{startDate}" required/>
-        <input type="hidden" name="endDate" th:value="*{endDate}" required/>
-        <button type="submit" th:text="#{carInfo.checkout}">Checkout</button>
-    </form>
-
-    <button type="button" onclick="cancelForm()" th:text="#{userInfo.cancel}"> Cancel</button>
-    <script type="text/javascript">
-    function cancelForm(){
-    window.location="[[@{/cars/carsForUser}]]";
-    }
+            <button type="submit" th:text="#{carInfo.calculate}"> Сalculate the cost</button>
+        </form>
+        <form id="form_rent_price" method="get" th:action="@{'/orders/new/'+${car.id}}">
+            <input type="hidden" name="startDate" th:value="*{startDate}" required/>
+            <input type="hidden" name="endDate" th:value="*{endDate}" required/>
+            <button type="submit" th:text="#{carInfo.checkout}">Checkout</button>
+        </form>
+        <button type="button" onclick="cancelForm()" th:text="#{userInfo.cancel}"> Cancel</button>
+        <script type="text/javascript">
+            function cancelForm(){
+            window.location="[[@{/cars/carsForUser}]]";
+            }
 
 
-
-    </script>
-    <footer th:insert="blocks/footer::footer"></footer>
+        </script>
+        <footer th:insert="blocks/footer::footer"></footer>
+    </div>
 </div>
 </body>
 </html>

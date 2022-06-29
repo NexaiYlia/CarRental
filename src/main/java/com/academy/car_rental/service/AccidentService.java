@@ -4,7 +4,6 @@ import com.academy.car_rental.exception.ServiceException;
 import com.academy.car_rental.model.entity.Accident;
 import com.academy.car_rental.model.entity.Order;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 

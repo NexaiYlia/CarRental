@@ -1,7 +1,6 @@
 package com.academy.car_rental.controller;
 
 import com.academy.car_rental.exception.ServiceException;
-import com.academy.car_rental.model.entity.Accident;
 import com.academy.car_rental.model.entity.Order;
 import com.academy.car_rental.model.entity.Payment;
 import com.academy.car_rental.model.entity.type.OrderStatus;

@@ -4,7 +4,7 @@
       xmlns:sec="http://www.thymeleaf.orh/extras/spring-security" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Orders</title>
+    <title th:text="#{app.titleOrders}">Orders</title>
     <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
 </head>
@@ -12,13 +12,15 @@
 <div class="conteiner">
     <div th:insert="blocks/header::header"></div>
     <div th:insert="blocks/menu::menu"></div>
-    <div><h1>List orders</h1></div>
-    <div>
-        <a class="h3" th:href="@{/orders/new}" th:text="#{orderInfo.add}">Add new order</a>
-    </div>
-
+    <div class="main-content"><h1>List orders</h1></div>
+<!--    <div id="SearchBtn">-->
+<!--        <form th:method="GET" th:action="@{/orders/new}">-->
+<!--            <button type="submit" th:text="#{orderInfo.add}">Add new order</button>-->
+<!--        </form>-->
+<!--    </div>-->
     <form th:method="GET" th:action="@{/orders/searchOrderByStatus/1}" class="formForSearch">
-       <h1 th:text="#{orderInfo.st}">Select orders by status:</h1>
+        <h3 th:text="#{orderInfo.st}">Select orders by status:</h3>
+        <div id="SearchBtn">
         <select name="status">
             <option th:each="status : ${T(com.academy.car_rental.model.entity.type.OrderStatus).values()}"
                     th:value="${status}" th:text="${status}"></option>
@@ -26,32 +28,37 @@
         <input type="hidden" name="pageNumber" value="1"/>
         <input type="hidden" name="sortField" value="id"/>
         <input type="hidden" name="sortDirection" value="asc"/>
-        <button type="submit" class="btnSearch" th:text="#{searchOrder.buttonSearch}">Search</button>
+        <button type="submit" th:text="#{searchOrder.buttonSearch}">Search</button>
+        </div>
     </form>
     <form th:method="GET" th:action="@{/orders/searchOrderByDate/1}" class="formForSearch">
-        <h1 th:text="#{orderInfo.d}">Select orders by date:</h1>
+        <h3 th:text="#{orderInfo.d}">Select orders by date:</h3>
+        <div id="SearchBtn">
         <input type="date" id="date" name="date"/>
-
         <input type="hidden" name="sortField" value="id"/>
         <input type="hidden" name="sortDirection" value="asc"/>
         <button type="submit" class="btnSearch" th:text="#{searchOrder.buttonSearch}">Search</button>
+        </div>
     </form>
-    <form th:method="GET" th:action="@{/orders/searchOrdersByUser/1}" class="formForSearch">
-        <h1 th:text="#{orderInfo.u}"> Select orders by User:</h1>
+    <form th:method="GET" th:action="@{/orders/searchOrdersByUser/1}">
+        <h3 th:text="#{orderInfo.u}"> Select orders by User:</h3>
+        <div id="SearchBtn">
         <input type="text" id="name" name="name"/>
-
         <input type="hidden" name="sortField" value="id"/>
         <input type="hidden" name="sortDirection" value="asc"/>
-        <button type="submit" class="btnSearch" th:text="#{searchOrder.buttonSearch}">Search</button>
+        <button type="submit" th:text="#{searchOrder.buttonSearch}">Search</button>
+        </div>
     </form>
     <form th:method="GET" th:action="@{/orders/1}" class="formForSearch">
         <input type="hidden" name="sortField" value="id"/>
         <input type="hidden" name="sortDirection" value="asc"/>
-        <button type="submit" class="btnSearch" th:text="#{searchOrder.clean}">Clean</button>
+        <div id="SearchBtn">
+        <button type="submit" th:text="#{searchOrder.clean}">Clean</button>
+        </div>
     </form>
-    <div>
-        <table class="table table-bordered">
-            <thead class="tread-green">
+    <div class="table">
+        <table width="95%">
+            <thead>
             <tr>
                 <th th:text="#{orderInfo.id}">Id</th>
                 <th th:text="#{orderInfo.startDate}">Start Date</th>
@@ -70,38 +77,40 @@
             <tbody>
             <th:block th:each="order:${orders}">
                 <tr>
-                    <td>[[${order.id}]]</td>
-                    <td>[[${order.startDate}]]</td>
-                    <td>[[${order.endDate}]]</td>
-                    <td>[[${order.user.getName}]] [[${order.user.getSurname}]]</td>
-                    <td>[[${order.car.getBrand}]] [[${order.car.getModel}]]</td>
-                    <td>[[${order.cost}]]</td>
-                    <td>[[${order.status}]]</td>
-                    <td>
+                    <td align="center" height="30">[[${order.id}]]</td>
+                    <td align="center" height="30">[[${order.startDate}]]</td>
+                    <td align="center" height="30">[[${order.endDate}]]</td>
+                    <td align="center" height="30">[[${order.user.getName}]] [[${order.user.getSurname}]]</td>
+                    <td align="center" height="30">[[${order.car.getBrand}]] [[${order.car.getModel}]]</td>
+                    <td align="center" height="30">[[${order.cost}]]</td>
+                    <td align="center" height="30">[[${order.status}]]</td>
+                    <td align="center" height="30">
                         <th:block th:each="payment:${payments}">
                             <div th:if="${payment.order.getId} eq ${order.id}">
                                 <a th:href="@{'/payments/showPaymentsByOrder/'+${payment.id}}">[[${payment.id}]]</a>
                             </div>
                         </th:block>
                     </td>
-                    <td>
+                    <td align="center" height="30">
                         <th:block th:each="accident:${accidents}">
                             <div th:if="${accident.order.getId} eq ${order.id}">
                                 <a th:href="@{'/accidents/showAccidentByOrder/'+${accident.id}}">[[${accident.id}]]</a>
                             </div>
                         </th:block>
                     </td>
-                    <td><a class="h4" th:href="@{'/accidents/createNew/'+${order.id}}" th:text="#{orderInfo.addAccident}">Add accident</a></td>
-                    <td>
+                    <td align="center" height="30">
+                        <a class="h4" th:href="@{'/accidents/createNew/'+${order.id}}" th:text="#{orderInfo.addAccident}">Add accident</a>
+                    </td>
+                    <td align="center" height="30">
                         <a class="h4" th:href="@{'/orders/changeStatus/'+${order.id}}" th:text="#{orderInfo.approved}">Approved</a>
                     </td>
-                    <td>
-                        <a>
-                            <form method="GET" th:action="@{'/orders/canceled/'+${order.id}}">
-                                <input type="text" name="comment" id="comment" class="input"/>
-                                <button type="submit" th:text="#{menu.cancel}" id="btnUsersForAdmin">Cancel</button>
-                            </form>
-                        </a>
+                    <td align="center" height="30">
+                        <form method="GET" th:action="@{'/orders/canceled/'+${order.id}}">
+                            <input type="text" name="comment" id="comment" class="input"/>
+                            <div id="tableBtn">
+                            <button type="submit" th:text="#{menu.cancel}" id="btnUsersForAdmin">Cancel</button>
+                            </div>
+                        </form>
                     </td>
                 </tr>
             </th:block>
@@ -111,27 +120,27 @@
     </form>
 
     <div class="pagination">
-        <a th:text="#{orders.numberOfOrders}" class="bold pagination_item">Number of orders:</a>
-        <a th:text="${page.getTotalElements()}" class="pagination_item">Number Of Elements</a>
-        <a th:text="#{page}" class="bold pagination_item">Page</a>
+        <span th:text="#{orders.numberOfOrders}" class="bold pagination_item">Number of orders:</span>
+        <span th:text="${page.getTotalElements()}" class="pagination_item">Number Of Elements</span>
+        <span th:text="#{page}" class="bold pagination_item">Page</span>
         <a th:text="(__${page.number}__+1)"/>
-        <span>of </span>
+        <span>  of  </span>
         <a th:text="${page.totalPages}" class="pagination_item"></a>
         <span th:each="i : ${#numbers.sequence(1,__${page.totalPages}__)}">
                 <a th:href="@{'/orders/'+${i}+'?sortField='+${sortField}+'&'
                 +'sortDirection='+${sortDirection}}" class="bold pagination_item">[[${i}]]</a>
             </span>
-        <a th:unless="${pageNumber}==(__${page.totalPages}__)" th:href="@{'/orders/'+${pageNumber+1}+'?sortField='+${sortField}+'&'
-                +'sortDirection='+${sortDirection}}" class="bold pagination_item" th:text="#{next}">Next</a>
-        <a th:if="${pageNumber}<(__${page.totalPages}__)" th:href="@{'/orders/'+${page.totalPages}+'?sortField='+${sortField}+'&'
-                +'sortDirection='+${sortDirection}}" class="bold pagination_item" th:text="#{last}">Last</a>
         <a th:if="${pageNumber}>1" th:href="@{'/orders/'+1+'?sortField='+${sortField}+'&'
                 +'sortDirection='+${sortDirection}}" class="bold pagination_item" th:text="#{first}">First</a>
         <a th:unless="${pageNumber}==1" th:href="@{'/orders/' + ${pageNumber-1}+'?sortField='+${sortField}+'&'
                 +'sortDirection='+${sortDirection}}" class="bold pagination_item" th:text="#{previous}">Previous</a>
+        <a th:unless="${pageNumber}==(__${page.totalPages}__)" th:href="@{'/orders/'+${pageNumber+1}+'?sortField='+${sortField}+'&'
+                +'sortDirection='+${sortDirection}}" class="bold pagination_item" th:text="#{next}">Next</a>
+        <a th:if="${pageNumber}<(__${page.totalPages}__)" th:href="@{'/orders/'+${page.totalPages}+'?sortField='+${sortField}+'&'
+                +'sortDirection='+${sortDirection}}" class="bold pagination_item" th:text="#{last}">Last</a>
     </div>
+    <footer th:insert="blocks/footer::footer"></footer>
 </div>
-<footer th:insert="blocks/footer::footer"></footer>
 </body>
 </html>
 

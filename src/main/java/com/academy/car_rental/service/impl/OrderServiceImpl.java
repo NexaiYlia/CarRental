@@ -1,7 +1,10 @@
 package com.academy.car_rental.service.impl;
 
 import com.academy.car_rental.exception.ServiceException;
-import com.academy.car_rental.model.entity.*;
+import com.academy.car_rental.model.entity.Accident;
+import com.academy.car_rental.model.entity.Car;
+import com.academy.car_rental.model.entity.Order;
+import com.academy.car_rental.model.entity.User;
 import com.academy.car_rental.model.entity.type.OrderStatus;
 import com.academy.car_rental.model.repository.AccidentRepository;
 import com.academy.car_rental.model.repository.CarRepository;
@@ -17,7 +20,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
-import javax.persistence.Transient;
 import javax.transaction.Transactional;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;

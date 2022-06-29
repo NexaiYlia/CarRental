@@ -113,12 +113,15 @@ public class OrderController {
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping(value = "/orders/cost/{id}")
     public String calculateCost(@PathVariable("id") Integer carId,
-                                @RequestParam(required = false) String startDate,
-                                @RequestParam(required = false) String endDate,
+                                @RequestParam("startDate") String startDate,
+                                @RequestParam("endDate") String endDate,
                                 Model model,
                                 Principal principal,
                                 RedirectAttributes ra) throws ServiceException {
+        System.out.println(startDate + endDate);
+        System.out.println("_______________________________________________________________");
         var car = carService.getById(carId);
+
         if (startDate.isBlank() || endDate.isBlank()) {
             model.addAttribute(CAR_FOR_MODEL, car);
             model.addAttribute(TIME_FOR_MODEL, "*Please enter a valid date");

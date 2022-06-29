@@ -1,12 +1,9 @@
 package com.academy.car_rental.controller;
 
-import antlr.StringUtils;
 import com.academy.car_rental.exception.ServiceException;
 import com.academy.car_rental.model.entity.Car;
-import com.academy.car_rental.model.entity.type.CarType;
 import com.academy.car_rental.service.CarService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.List;
 
 import static com.academy.car_rental.constant.Constants.*;
@@ -37,7 +33,6 @@ public class CarController {
         return "car/cars";
     }
 
-    @PreAuthorize("hasAuthority('ROLE_USER')")
     @GetMapping(value = "/carsForUser")
     public String showCarForUser(Model model) {
         List<Car> cars = carService.getAll();
@@ -86,7 +81,7 @@ public class CarController {
             if (!carService.checkHasCarOrder(id)) {
                 carService.delete(id);
                 ra.addFlashAttribute(MESSAGE, "The car because was deleted successfully");
-            } else{
+            } else {
                 ra.addFlashAttribute(MESSAGE, "It is not possible to delete the car because there are active orders");
 
             }

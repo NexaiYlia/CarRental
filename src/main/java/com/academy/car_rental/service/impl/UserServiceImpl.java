@@ -5,7 +5,6 @@ import com.academy.car_rental.exception.ServiceException;
 import com.academy.car_rental.model.entity.Order;
 import com.academy.car_rental.model.entity.User;
 import com.academy.car_rental.model.entity.type.Role;
-import com.academy.car_rental.model.repository.OrderRepository;
 import com.academy.car_rental.model.repository.UserRepository;
 import com.academy.car_rental.service.EmailService;
 import com.academy.car_rental.service.OrderService;
@@ -19,11 +18,12 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
 import javax.mail.MessagingException;
 import javax.transaction.Transactional;
 import java.io.UnsupportedEncodingException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import static com.academy.car_rental.constant.Constants.LOCALHOST;
 

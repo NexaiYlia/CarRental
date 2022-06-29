@@ -2,14 +2,12 @@ package com.academy.car_rental.model.repository;
 
 import com.academy.car_rental.model.entity.Car;
 import com.academy.car_rental.model.entity.Order;
-import com.academy.car_rental.model.entity.Payment;
 import com.academy.car_rental.model.entity.User;
 import com.academy.car_rental.model.entity.type.OrderStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;

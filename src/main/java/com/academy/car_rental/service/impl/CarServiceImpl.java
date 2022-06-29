@@ -3,7 +3,6 @@ package com.academy.car_rental.service.impl;
 import com.academy.car_rental.exception.ServiceException;
 import com.academy.car_rental.model.entity.Car;
 import com.academy.car_rental.model.entity.Order;
-import com.academy.car_rental.model.entity.User;
 import com.academy.car_rental.model.entity.type.CarType;
 import com.academy.car_rental.model.repository.CarRepository;
 import com.academy.car_rental.model.repository.OrderRepository;
@@ -15,7 +14,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;

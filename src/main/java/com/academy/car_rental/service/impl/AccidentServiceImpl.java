@@ -2,20 +2,14 @@ package com.academy.car_rental.service.impl;
 
 import com.academy.car_rental.exception.ServiceException;
 import com.academy.car_rental.model.entity.Accident;
-import com.academy.car_rental.model.entity.Car;
 import com.academy.car_rental.model.entity.Order;
-import com.academy.car_rental.model.entity.type.OrderStatus;
 import com.academy.car_rental.model.repository.AccidentRepository;
 import com.academy.car_rental.model.repository.OrderRepository;
 import com.academy.car_rental.service.AccidentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 

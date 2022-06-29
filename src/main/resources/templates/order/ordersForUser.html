@@ -13,9 +13,9 @@
     <div th:insert="blocks/header::header"></div>
     <div th:insert="blocks/menu::menu"></div>
     <div><h1 th:text="#{orderInfo.listOfOrders}">My list of orders</h1></div>
-    <div>
-        <table class="table table-bordered">
-            <thead class="tread-green">
+    <div class="table">
+        <table width="80%">
+            <thead>
             <tr>
                 <th th:text="#{orderInfo.id}">Id</th>
                 <th th:text="#{orderInfo.startDate}">Start Date</th>
@@ -29,33 +29,30 @@
             <tbody>
             <th:block th:each="order:${orders}">
                 <tr>
-                    <td>[[${order.id}]]</td>
-                    <td>[[${order.startDate}]]</td>
-                    <td>[[${order.endDate}]]</td>
-                    <td>[[${order.car.getBrand}]] [[${order.car.getModel}]]</td>
-                    <td>[[${order.cost}]]</td>
-                    <td>[[${order.status}]]</td>
-                    <td>
+                    <td align="center" height="30">[[${order.id}]]</td>
+                    <td align="center" height="30">[[${order.startDate}]]</td>
+                    <td align="center" height="30">[[${order.endDate}]]</td>
+                    <td align="center" height="30">[[${order.car.getBrand}]] [[${order.car.getModel}]]</td>
+                    <td align="center" height="30">[[${order.cost}]]</td>
+                    <td align="center" height="30">[[${order.status}]]</td>
+                    <td align="center" width="450" height="30">
                         <th:block th:each="accident:${accidents}">
                             <div th:if="${accident.order.getId} eq ${order.id}">
                                 <a th:href="@{'/accidents/showAccidentByOrder/'+${accident.id}}">[[${accident.id}]]</a>
                             </div>
                         </th:block>
                     </td>
-                    <td>
-                        <a>
-                            <form method="GET" th:action="@{'/orders/canceledByUser/'+${order.id}}">
-                                <button type="submit" th:text="#{menu.cancel}" id="btnUsersForAdmin">cancel</button>
-                            </form>
-                        </a>
+                    <td align="center" height="30">
+                    <form method="GET" th:action="@{'/orders/canceledByUser/'+${order.id}}">
+                        <button th:text="#{menu.cancel}" id="btnUsersForAdmin">cancel</button>
+                    </form>
                     </td>
-
                 </tr>
             </th:block>
             </tbody>
         </table>
     </div>
+    <footer th:insert="blocks/footer::footer" id="footer_other"></footer>
 </div>
-<footer th:insert="blocks/footer::footer"></footer>
 </body>
 </html>

@@ -3,13 +3,11 @@ package com.academy.car_rental.service;
 import com.academy.car_rental.dto.UserDto;
 import com.academy.car_rental.exception.ServiceException;
 import com.academy.car_rental.model.entity.User;
-import jdk.jshell.spi.ExecutionControl;
 import org.springframework.data.domain.Page;
 
 import javax.mail.MessagingException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
     Page<User> findAll(int pageNumber, String sortField, String sortDirection) throws ServiceException;

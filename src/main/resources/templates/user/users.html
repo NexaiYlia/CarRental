@@ -21,12 +21,15 @@
         <div style="color:red " th:if="${message}" class="alert alert-success text-center">
             <h1>[[${message}]]</h1>
         </div>
-        <div>
-            <a class="_" th:href="@{/users/new}" th:text="#{app.add}">Add new user</a>
-        </div>
-        <div>
-            <table class="_">
-                <thead class="_">
+            <div id="AddBtn">
+                <form th:method="GET" th:action="@{/users/new}">
+                    <button type="submit" th:text="#{app.add}">Add new user</button>
+                </form>
+            </div>
+<!--            <a class="_" th:href="@{/users/new}" th:text="#{app.add}">Add new user</a>-->
+        <div class="table">
+            <table width="80%">
+                <thead>
                 <tr>
                     <th th:text="#{user.id}">Id</th>
                     <th th:text="#{user.login}">Login</th>
@@ -40,17 +43,36 @@
                 <tbody>
                 <th:block th:each="user:${users}">
                     <tr>
-                        <td>[[${user.id}]]</td>
-                        <td>[[${user.username}]]</td>
-                        <td>[[${user.email}]]</td>
-                        <td>[[${user.name}]]</td>
-                        <td>[[${user.surname}]]</td>
-                        <td>[[${user.phoneNumber}]]</td>
-                        <td>
-                            <a class="_" th:href="@{'/users/edit/'+${user.id}}" th:text="#{user.edit}">edit</a>
-                            <a class="_" th:href="@{'/users/delete/'+${user.id}}" th:text="#{user.delete}">delete</a>
-                            <a class="_" th:href="@{'/users/makeAdmin/'+${user.id}}" th:text="#{user.makeAdmin}">Make admin</a>
+                        <td align="center" height="30">[[${user.id}]]</td>
+                        <td align="center" height="30">[[${user.username}]]</td>
+                        <td align="center" height="30">[[${user.email}]]</td>
+                        <td align="center" height="30">[[${user.name}]]</td>
+                        <td align="center" height="30">[[${user.surname}]]</td>
+                        <td align="center" height="30">[[${user.phoneNumber}]]</td>
+                        <td align="center" height="30">
+                            <div id="tableBtn">
+                                <form th:method="GET" th:action="@{'/users/edit/'+${user.id}}">
+                                    <button type="submit" th:text="#{user.edit}">edit</button>
+                                </form>
+                            </div>
                         </td>
+<!--                            <a class="_" th:href="@{'/users/edit/'+${user.id}}" th:text="#{user.edit}">edit</a>-->
+                        <td align="center" height="30">
+                            <div id="tableBtn">
+                                <form th:method="GET" th:action="@{'/users/delete/'+${user.id}}">
+                                    <button type="submit" th:text="#{user.delete}">delete</button>
+                                </form>
+                            </div>
+                        </td>
+<!--                            <a class="_" th:href="@{'/users/delete/'+${user.id}}" th:text="#{user.delete}">delete</a>-->
+                        <td align="center" height="30">
+                            <div>
+                                <form th:method="GET" th:action="@{'/users/makeAdmin/'+${user.id}}">
+                                    <button type="submit" id="tableBtnEx" th:text="#{user.makeAdmin}">Make admin</button>
+                                </form>
+                            </div>
+                        </td>
+<!--                            <a class="_" th:href="@{'/users/makeAdmin/'+${user.id}}" th:text="#{user.makeAdmin}">Make admin</a>-->
                     </tr>
                 </th:block>
                 </tbody>
