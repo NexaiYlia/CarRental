@@ -26,7 +26,7 @@ public class Accident {
     @Column
     private BigDecimal cost;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade ={ CascadeType.DETACH,CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
     @JoinColumn(name = "order_id")
     private Order order;
     @Column(name = "is_paid")

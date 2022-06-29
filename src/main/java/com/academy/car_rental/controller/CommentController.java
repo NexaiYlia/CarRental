@@ -33,6 +33,14 @@ public class CommentController {
 
         return "comment/comments";
     }
+    @GetMapping(value = "/commentsMainPage")
+    public String showCommentMainPage(Model model) {
+
+        List<Comment> comments = commentService.getAll();
+        model.addAttribute(COMMENTS_FOR_MODEL, comments);
+
+        return "comment/commentsMainPage";
+    }
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping(value = "/comments/new")

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.orh/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+</head>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+    <div class="main-content"><h1 th:text="#{commentInfo.com}">List comments</h1></div>
+    <th:block th:each="comment:${comments}">
+        <div class="userInfo">
+            <table width="50%">
+                <tbody>
+                <tr>
+                    <td align="right" valign="top">
+                        <img class="user_img" src="../img/user_default.webp" alt="user_default">
+                    </td>
+                    <td width="60%">
+                        <div>
+                            <p><a th:text="#{commentInfo.user}">User:</a>
+                                <strong th:text="${comment.user.getName}"></strong></p>
+                        </div>
+                        <div>
+                            <p><a th:text="#{commentInfo.date}">Date:</a>
+                                <strong th:text="${comment.date}" id="date"></strong>
+                            </p>
+                        </div>
+                        <div>
+                            <p><a th:text="#{commentInfo.content}">Content:</a>
+                                <strong th:text="${comment.content}" id="content"></strong>
+                            </p>
+                        </div>
+                        __________________________________________________________________________________________________________________________
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+</div>
+</body>
+</html>

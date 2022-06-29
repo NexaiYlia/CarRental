@@ -168,7 +168,8 @@ public class UserController {
     public String updatePasswordOfUser(@PathVariable("id") Integer userId,
                                        @RequestParam("password") String password,
                                        RedirectAttributes ra) throws ServiceException {
-        userService.updatePasswordOfUser(userId, password);
+        var user = userService.getById(userId);
+        userService.updatePasswordOfUser(user, password);
         ra.addFlashAttribute(MESSAGE, "Password changed successfully");
         return "redirect:/users/userProfile";
 

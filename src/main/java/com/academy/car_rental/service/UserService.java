@@ -57,5 +57,5 @@ public interface UserService {
 
     void makeAdmin(User user) throws MessagingException, UnsupportedEncodingException;
 
-    boolean updatePasswordOfUser(Integer userId, String password) throws ServiceException;
+    boolean updatePasswordOfUser(User user, String password);
 }

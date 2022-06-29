@@ -43,37 +43,55 @@
                         </div>
                         <div>
                             <p><span th:text="#{userInfo.roles}">Role</span>
-                                <strong th:text="${user.roles}" id="role"></strong></p>
-                        </div>
-                    </div>
-                    <div>
-                        <form th:method="GET" th:action="@{'/users/updatePasswordOfUser/'+${user.id}}">
-                            <div>
-                                <label for="password" th:text="#{profile.password}" class="label">If you want to
-                                    change your password, enter it in the box below and then click save.</label>
-                                <input type="password" name="password" id="password" th:placeholder="#{login.password}" required
-                                       class="input" style="display:block; max-width: 250px; margin: 0 auto; margin-top: 1em;"/>
+                            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                                <strong>administrator</strong>
                             </div>
-                            <button type="submit" class="form_login_button" th:text="#{save}"
-                                    style="display:block; margin-top: 1em; width: 15em;">Save
-                            </button>
-                            <button type="button" class="form_login_button" onclick="cancelForm()" th:text="#{userInfo.cancel}"
-                                    style="display:block; margin-top: 1em; width: 15em;"> Cancel
-                            </button>
-                        </form>
+                            <div sec:authorize="hasRole('USER')">
+                                <strong>user</strong>
+                            </div>
+                        </div>
                     </div>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-
-    <footer th:insert="blocks/footer::footer" id="footer_other"></footer>
+    <div>
+        <form th:method="GET" th:action="@{'/users/updatePasswordOfUser/'+${user.id}}">
+            <div>
+                <label for="password" th:text="#{profile.password}" class="label">If you want to
+                    change your password, enter it in the box below and then click save.</label>
+                <input type="password" name="password" id="password" th:placeholder="#{login.password}" required
+                       class="input" style="display:block; max-width: 250px; margin: 0 auto; margin-top: 1em;"/>
+            </div>
+            <button type="submit" class="form_login_button" th:text="#{save}"
+                    style="display:block; margin-top: 1em; width: 15em;">Save
+            </button>
+            <button type="button" class="form_login_button" onclick="cancelForm()" th:text="#{userInfo.cancel}"
+                    style="display:block; margin-top: 1em; width: 15em;"> Cancel
+            </button>
+        </form>
+    </div>
+</div>
+<footer th:insert="blocks/footer::footer" id="footer_other"></footer>
 </div>
 <script type="text/javascript">
     function cancelForm(){
     window.location="[[@{/}]]";
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </script>
 </body>

@@ -166,11 +166,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+
     @Transactional
-    public boolean updatePasswordOfUser(Integer userId, String password) throws ServiceException {
-        var updatedUser = getById(userId);
-        updatedUser.setPassword(passwordEncoder.encode(password));
-        saveAndFlush(updatedUser);
+    @Override
+    public boolean updatePasswordOfUser(User user, String password)  {
+        user.setPassword(passwordEncoder.encode(password));
+        saveAndFlush(user);
         return true;
     }
 

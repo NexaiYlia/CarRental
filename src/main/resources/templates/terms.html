@@ -28,22 +28,22 @@
                 <tbody>
                     <tr>
                         <td align="right" width="30%">
-                            <h3>Необходимые документы:</h3>
+                            <h3 th:text="#{terms.doc}">Required documents:</h3>
                             <ul class="ul_terms">
-                                <li>Паспорт</li>
-                                <li>Водительское удостоверение</li>
-                                <li>Залог*</li>
-                                <li>Стаж вождения не менее 1 года</li>
+                                <li th:text="#{terms.passport}">The passport</li>
+                                <li th:text="#{terms.license}">Driver's license</li>
+                                <li th:text="#{terms.pledge}">Pledge*</li>
+                                <li th:text="#{terms.experience}">Driving experience of at least 1 year</li>
                             </ul>
                         </td>
                         <td align="center">
                             <img src="./img/terms_mobile.png" alt="terms_mobile">
                         </td>
                         <td align="left" width="30%">
-                            <h4>В стоимость суток аренды включено 300 км пробега, каждые последующие 100 км оплачиваются отдельно</h4>
-                            <p>
-                                *Для выдачи автомобиля необходим залог, который в полной мере возвращается в случае возврата авто в таком же состоянии, как и в момент выдачи (уровень топлива, техническое и эстетическое состояние).
-                                Для граждан РБ сумма залога — 200 бел. рублей, для неграждан РБ — $200.
+                            <h4 th:text="#{terms.300}">The cost of a rental day includes 300 km of run, each subsequent 100 km are paid separately</h4>
+                            <p th:text="#{terms.text}">
+                                *To issue a car, a deposit is required, which is fully refundable if the car is returned in the same condition as at the time of issue (fuel level, technical and aesthetic condition).
+                                For citizens of the Republic of Belarus, the amount of the deposit is 200 Belarusian rubles. rubles, for foreign persons of the Republic of Belarus - $200.
                             </p>
                         </td>
                     </tr>
