@@ -18,6 +18,14 @@ In the project I used tools such as Spring MVC, Spring Security,AOP, MySql, FlyW
 <p align="justify"> 
 <img src="https://user-images.githubusercontent.com/88191742/176380037-de219db7-7b53-46a4-be10-1cd781ed50ee.png" alt="db_schema">
 </p>
+ 
+<h3>1.4	Description of roles in the project</h3>
+<p align="justify"> 
+* Admin - the person managing the website with the most permissions.
+</p>
+<p>
+* User - a customer, a person using our website to book a car, each user who creates an account initially has the role of a customer, other roles are assigned by the administrator.
+</p>
 
 </body>
 </html>
