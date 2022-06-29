@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -42,19 +43,21 @@ public class CarController {
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping(value = "/new")
-    public String showNewForm(Model model) {
-        model.addAttribute(CAR_FOR_MODEL, new Car());
-        model.addAttribute(PAGE_TITLE_FOR_MODEL, "Add new car");
+    public String showNewForm(@ModelAttribute("car") Car car) {
+//        model.addAttribute(CAR_FOR_MODEL, new Car());
+//        model.addAttribute(PAGE_TITLE_FOR_MODEL, "Add new car");
 
         return "car/car_form";
     }
 
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping(value = "/save")
-    public String saveCar(Car car, RedirectAttributes ra, @RequestParam("carImg") MultipartFile multipartFile) throws ServiceException, IOException {
+    public String saveCar(@ModelAttribute("car") @Valid Car car, BindingResult bindingResult, RedirectAttributes ra, @RequestParam("carImg") MultipartFile multipartFile) throws ServiceException, IOException {
 
+        if (bindingResult.hasErrors()) {
+            return "car/car_form";
+        }
         carService.createNewCar(car, multipartFile);
-
         ra.addFlashAttribute(MESSAGE, "The car has been saved successfully.");
         return "redirect:/cars";
     }

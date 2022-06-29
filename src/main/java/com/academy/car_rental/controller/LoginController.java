@@ -30,32 +30,28 @@ public class LoginController {
     private final UserEmailAndUsernameValidator userEmailAndUsernameValidator;
 
     @GetMapping("/registration")
-    public String registration(Model model) {
-        UserDto user = new UserDto();
-
-        model.addAttribute(USER_FOR_MODEL, user);
-
+    public String registration(@ModelAttribute("userDto") UserDto userDto) {
         return "registration";
 
     }
 
     @PostMapping("/registration")
-    public String registration(@Valid @ModelAttribute("user") UserDto user,
-                                BindingResult bindingResult) throws MessagingException, UnsupportedEncodingException {
-        var emailMessage = userEmailAndUsernameValidator.validateEmail(user);
+    public String registration(@ModelAttribute("userDto") @Valid UserDto userDto,
+                               BindingResult bindingResult) throws MessagingException, UnsupportedEncodingException {
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
+        var emailMessage = userEmailAndUsernameValidator.validateEmail(userDto);
         if (emailMessage != null) {
             ObjectError error = new ObjectError(EMAIL, emailMessage);
             bindingResult.addError(error);
         }
-        var usernameMessage = userEmailAndUsernameValidator.validateUsername(user);
+        var usernameMessage = userEmailAndUsernameValidator.validateUsername(userDto);
         if (usernameMessage != null) {
             ObjectError error = new ObjectError(USERNAME, usernameMessage);
             bindingResult.addError(error);
         }
-        if (bindingResult.hasErrors()) {
-            return "registration";
-        }
-        userService.save(user);
+        userService.save(userDto);
         return "redirect:/";
     }
 
@@ -71,6 +67,7 @@ public class LoginController {
             return "/";
         }
     }
+
     @GetMapping("/verification")
     public String makeVerification(@RequestParam("code") String verificationCode, Principal principal) throws UserException {
 

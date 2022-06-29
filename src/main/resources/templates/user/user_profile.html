@@ -11,52 +11,63 @@
 <div class="conteiner">
     <div th:insert="blocks/header::header"></div>
     <div th:insert="blocks/menu::menu"></div>
-    <div class="userInfo" id="userInfo">
+    <div class="userInfo">
+        <table width="80%">
+            <tbody>
+            <tr>
+                <td align="right" valign="top">
+                    <img class="user_img" src="../img/user_default.webp" alt="user_default">
+                </td>
+                <td width="60%">
+                    <div style="color:red" th:if="${message}" class="alert alert-success text-center">
+                        <h1>[[${message}]]</h1>
+                    </div>
+                    <div>
+                        <div>
+                            <p><span th:text="#{userInfo.name}">Name: </span>
+                                <strong th:text="${user.name}" id="name"></strong></p>
+                        </div>
+                        <div>
+                            <p><span th:text="#{userInfo.surname}">Surname: </span>
+                                <strong th:text="${user.surname}" id="surname"></strong></p>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <p><span th:text="#{userInfo.phone}">Phone number:</span>
+                                <strong th:text="${user.phoneNumber}" id="phoneNumber"></strong></p>
+                        </div>
+                        <div>
+                            <p><span th:text="#{userInfo.email}">Email</span>
+                                <strong th:text="${user.email}" id="email"></strong></p>
+                        </div>
+                        <div>
+                            <p><span th:text="#{userInfo.roles}">Role</span>
+                                <strong th:text="${user.roles}" id="role"></strong></p>
+                        </div>
+                    </div>
+                    <div>
+                        <form th:method="GET" th:action="@{'/users/updatePasswordOfUser/'+${user.id}}">
+                            <div>
+                                <label for="password" th:text="#{profile.password}" class="label">If you want to
+                                    change your password, enter it in the box below and then click save.</label>
+                                <input type="password" name="password" id="password" th:placeholder="#{login.password}" required
+                                       class="input" style="display:block; max-width: 250px; margin: 0 auto; margin-top: 1em;"/>
+                            </div>
+                            <button type="submit" class="form_login_button" th:text="#{save}"
+                                    style="display:block; margin-top: 1em; width: 15em;">Save
+                            </button>
+                            <button type="button" class="form_login_button" onclick="cancelForm()" th:text="#{userInfo.cancel}"
+                                    style="display:block; margin-top: 1em; width: 15em;"> Cancel
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-        <div style="color:red" th:if="${message}" class="alert alert-success text-center">
-            <h1>[[${message}]]</h1>
-        </div>
-        <div>
-            <div>
-                <p><span th:text="#{userInfo.name}">Name: </span>
-                    <strong th:text="${user.name}" id="name"></strong></p>
-            </div>
-            <div>
-                <p><span th:text="#{userInfo.surname}">Surname: </span>
-                    <strong th:text="${user.surname}" id="surname"></strong></p>
-            </div>
-        </div>
-        <div>
-            <div>
-                <p><span th:text="#{userInfo.phone}">Phone number:</span>
-                    <strong th:text="${user.phoneNumber}" id="phoneNumber"></strong></p>
-            </div>
-            <div>
-                <p><span th:text="#{userInfo.email}">Email</span>
-                    <strong th:text="${user.email}" id="email"></strong></p>
-            </div>
-            <div>
-                <p><span th:text="#{userInfo.roles}">Role</span>
-                    <strong th:text="${user.roles}" id="role"></strong></p>
-            </div>
-        </div>
-    </div>
-    <div>
-        <form th:method="GET" th:action="@{'/users/updatePasswordOfUser/'+${user.id}}">
-            <div>
-                <label for="password" th:text="#{profile.password}" class="label" style="display:block;">If you want to
-                    change your password, enter it in the box below and then click save.</label>
-                <input type="password" name="password" id="password" th:placeholder="#{login.password}" required
-                       class="input" style="max-width: 250px; margin: 0 auto; margin-left: 1em; margin-top: 1em;"/>
-            </div>
-            <button type="submit" class="form_login_button" th:text="#{save}"
-                    style="display:block; margin: 1em; width: 15em;">Save
-            </button>
-            <button type="button" class="form_login_button" onclick="cancelForm()" th:text="#{userInfo.cancel}"
-                    style="display:block; margin: 1em; width: 15em;"> Cancel
-            </button>
-        </form>
-    </div>
     <footer th:insert="blocks/footer::footer" id="footer_other"></footer>
 </div>
 <script type="text/javascript">

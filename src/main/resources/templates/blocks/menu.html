@@ -51,8 +51,9 @@
             <nav>
                 <ul class="menu-main">
                     <li><a th:href="@{/about}" th:text="#{menu.aboutUs}">About us</a></li>
-                    <li><a href="#" th:text="#{menu.terms}">Rent terms</a></li>
+                    <li><a th:href="@{/terms}" th:text="#{menu.terms}">Rent terms</a></li>
                     <li><a th:href="@{/contacts}" th:text="#{menu.contacts}">Contacts</a></li>
+                    <li><a th:href="@{/comments}" th:text="#{menu.comments}">Comments</a></li>
                     <li><a th:href="@{/login}" th:text="#{menu.signin}">Sign in</a></li>
                     <li><a th:href="@{/registration}" th:text="#{menu.signup}">Sign up</a></li>
                     <!-- LANG START -->
@@ -83,11 +84,12 @@
             <nav>
                 <ul class="menu-main">
                     <li><a th:href="@{/about}" th:text="#{menu.aboutUs}">About us</a></li>
-                    <li><a href="#" th:text="#{menu.terms}">Rent terms</a></li>
+                    <li><a th:href="@{/terms}" th:text="#{menu.terms}">Rent terms</a></li>
                     <li><a th:href="@{/contacts}" th:text="#{menu.contacts}">Сontacts</a></li>
                     <li><a th:href="@{/users/userProfile}" th:text="#{menu.profile}">Profile</a></li>
                     <li><a th:href="@{/cars/carsForUser}" th:text="#{menu.cars}">Cars</a></li>
                     <li><a th:href="@{/orders/ordersForUser}" th:text="#{menu.Myorders}">My orders</a></li>
+                    <li><a th:href="@{/comments}" th:text="#{menu.comments}">Comments</a></li>
                     <li><a th:href="@{/logout}" th:text="#{menu.logout}">Logout</a></li>
                     <!-- LANG START -->
                     <li>

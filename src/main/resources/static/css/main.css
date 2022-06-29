@@ -76,6 +76,15 @@ a:hover {
 	transition: 0.3s;
 }
 
+.ul_terms {
+	display: inline-block;
+	list-style: none;
+}
+
+.ul_terms li {
+	margin-bottom: 0.5em;
+}
+
 .menu-main {
 	/* border: solid;
 	border-color: red; */
@@ -255,12 +264,6 @@ input {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
-}
-
-label {
-    width: 60%;
-    display: inline-block;
-		margin-left: 1em;
 }
 
 /* Set a style for all buttons */
@@ -571,4 +574,11 @@ textarea {
 	margin: 0 auto;
 	margin-left: 0;
 	margin-right: 0;
+}
+
+.user_img {
+	width: 360px;
+	height: auto;
+	display: block;
+
 }

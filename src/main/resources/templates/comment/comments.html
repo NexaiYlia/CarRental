@@ -14,20 +14,20 @@
     <div th:insert="blocks/menu::menu"></div>
     <div class="main-content"><h1 th:text="#{commentInfo.com}">List comments</h1></div>
     <div>
-        <div id="AddBtn">
-            <form th:method="GET" th:action="@{/comments/new}">
-                <button type="submit" th:text="#{commentInfo.add}">Add new comment</button>
-            </form>
+        <div sec:authorize="hasRole('ROLE_USER')">
+            <div id="AddBtn">
+                <form th:method="GET" th:action="@{/comments/new}">
+                    <button type="submit" th:text="#{commentInfo.add}">Add new comment</button>
+                </form>
+            </div>
         </div>
     </div>
     <div>&nbsp</div>
-    <div style="color: green" th:if="${message}" class="alert alert-success text-center">
-        [[${message}]]
-    </div>
+    <div style="color:red " th:if="${message}"><h1>[[${message}]]</h1></div>
     <div>
         <div class="table">
             <table width="80%">
-                <thead class="tread-green">
+                <thead>
                 <tr>
                     <th th:text="#{commentInfo.id}">Id</th>
                     <th th:text="#{commentInfo.user}">User</th>
@@ -44,17 +44,21 @@
                         <td align="center" height="30">[[${comment.date}]]</td>
                         <td align="center" height="30">[[${comment.content}]]</td>
                         <td align="center" height="30">
-                            <div id="tableBtn">
-                                <form th:method="GET" th:action="@{'/comments/edit/'+${comment.id}}">
-                                    <button type="submit" th:text="#{commentInfo.edit}">edit</button>
-                                </form>
+                            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                                <div id="tableBtn">
+                                    <form th:method="GET" th:action="@{'/comments/edit/'+${comment.id}}">
+                                        <button type="submit" th:text="#{commentInfo.edit}">edit</button>
+                                    </form>
+                                </div>
                             </div>
                         </td>
                         <td align="center" height="30">
-                            <div id="tableBtn">
-                                <form th:method="GET" th:action="@{'/comments/delete/'+${comment.id}}">
-                                    <button type="submit" th:text="#{commentInfo.delete}">delete</button>
-                                </form>
+                            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                                <div id="tableBtn">
+                                    <form th:method="GET" th:action="@{'/comments/delete/'+${comment.id}}">
+                                        <button type="submit" th:text="#{commentInfo.delete}">delete</button>
+                                    </form>
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -67,6 +71,11 @@
 <script type="text/javascript">
     function clearFilter(){
     window.location="@{/}"}
+
+
+
+
+
 
 
 

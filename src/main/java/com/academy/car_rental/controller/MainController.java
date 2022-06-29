@@ -30,6 +30,11 @@ public class MainController {
         return "about";
 
     }
+    @GetMapping(value = "/terms")
+    public String showTermsPage() {
+        return "terms";
+
+    }
 
     @GetMapping(value = "/contacts")
     public String showContactsPage() {

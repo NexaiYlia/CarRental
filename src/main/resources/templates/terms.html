@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.orh/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="#{app.titleTerms}">Rent terms</title>
+    <link rel="icon" type="image/x-icon" href="/img/car_fav.png">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<body>
+<div class="conteiner">
+    <div th:insert="blocks/header::header"></div>
+    <div th:insert="blocks/menu::menu"></div>
+    <h1 class="headOfPage" th:text="#{h1.Terms}"></h1>
+    <div class="table">
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="right" width="30%">
+                            <h3>Необходимые документы:</h3>
+                            <ul class="ul_terms">
+                                <li>Паспорт</li>
+                                <li>Водительское удостоверение</li>
+                                <li>Залог*</li>
+                                <li>Стаж вождения не менее 1 года</li>
+                            </ul>
+                        </td>
+                        <td align="center">
+                            <img src="./img/terms_mobile.png" alt="terms_mobile">
+                        </td>
+                        <td align="left" width="30%">
+                            <h4>В стоимость суток аренды включено 300 км пробега, каждые последующие 100 км оплачиваются отдельно</h4>
+                            <p>
+                                *Для выдачи автомобиля необходим залог, который в полной мере возвращается в случае возврата авто в таком же состоянии, как и в момент выдачи (уровень топлива, техническое и эстетическое состояние).
+                                Для граждан РБ сумма залога — 200 бел. рублей, для неграждан РБ — $200.
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    <footer th:insert="blocks/footer::footer"></footer>
+</div>
+</body>
+</html>

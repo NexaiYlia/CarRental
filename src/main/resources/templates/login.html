@@ -17,7 +17,7 @@
                 <form th:action="@{/login}" method="post" style="max-width: 400px; margin: 0 auto;">
                     <div th:unless="${error}==null">
                         <p>
-                            <a th:text="${error}"></a>
+                            <a style="color:red" th:text="${error}"></a>
                         </p>
                     </div>
                     <div>

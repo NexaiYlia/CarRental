@@ -24,7 +24,7 @@ import static com.academy.car_rental.constant.Constants.*;
 public class CommentController {
     private final CommentService commentService;
 
-    @PreAuthorize("isAuthenticated()")
+
     @GetMapping(value = "/comments")
     public String showCommentList(Model model) {
 
@@ -34,7 +34,7 @@ public class CommentController {
         return "comment/comments";
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     @GetMapping(value = "/comments/new")
     public String showNewForm(Model model) {
         model.addAttribute(COMMENT_FOR_MODEL, new Comment());
@@ -43,7 +43,7 @@ public class CommentController {
         return "comment/comment_form";
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     @PostMapping(value = "/comments/createComment")
     public String createComment(@RequestParam("content") String content, Principal principal, RedirectAttributes ra) {
         commentService.createNewComment(content, principal);

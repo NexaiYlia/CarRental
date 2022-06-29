@@ -15,7 +15,7 @@
             <div th:insert="blocks/menu::menu"></div>
     </div>
     <div id="form_signUp">
-        <form th:method="POST" th:action="@{/registration}" th:object="${user}">
+        <form th:method="POST" th:action="@{/registration}" th:object="${userDto}">
             <div th:unless="${error}==null">
                 <p>
                     <a th:text="${error}"></a>
@@ -25,8 +25,7 @@
                 <label for="username" th:text="#{authorization.username}">Enter username</label>
                 <input type="text" name="username" id="username" th:placeholder="#{login.placeholderForUsername}"
                        class="input"/>
-                <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username error
-                </div>
+                <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username error</div>
             </div>
             <div>
                 <label for="password" th:text="#{authorization.password}" class="label">Enter password: </label>
