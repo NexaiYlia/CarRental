@@ -10,10 +10,13 @@ The purpose of the Car Rental app is to support the car rental company. The main
 </p>
 
 <h3>1.2	Tools</h3>
+<p align="justify">
 In the project I used tools such as Spring MVC, Spring Security,AOP, MySql, FlyWay, Logback, JUnit, Mockito, Lombok, Thymeleaf, exception handling, localization and internationalization. Created my own exceptions and views for them.
+</p>
 
 <h3>1.3	Database schema</h3>
+<p align="justify"> 
 <img src="https://user-images.githubusercontent.com/88191742/176380037-de219db7-7b53-46a4-be10-1cd781ed50ee.png" alt="db_schema">
-  
+</p>
 </body>
 </html>
