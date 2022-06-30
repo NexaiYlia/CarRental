@@ -76,7 +76,7 @@ public class PaymentController {
             model.addAttribute(ORDER_FOR_MODEL, order);
             model.addAttribute(PAYMENT_FOR_MODEL, payment);
             model.addAttribute(PAGE_TITLE_FOR_MODEL, "Add new payment");
-            model.addAttribute(CARD_DATA_FOR_MODEL, "Order was paid card №" + number + ". Validity:" + validity1 + "/" + validity2);
+            model.addAttribute(CARD_DATA_FOR_MODEL, "Order was paid card №" + number + ". Validity:" + validity1 + ".Passport №" + validity2);
 
         } catch (ServiceException e) {
             ra.addFlashAttribute(MESSAGE, "The payment wasn't add." + e.getMessage());

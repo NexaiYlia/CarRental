@@ -147,6 +147,15 @@ a:hover {
 	margin-left: 5em;
 }
 
+.carImg_edit {
+
+}
+
+.carImg_edit img {
+	width: 70%
+}
+
+
 .car_img {
 
 }
@@ -316,12 +325,36 @@ button:hover {
     margin: 0 auto;
 }
 
+#form_pay {
+    width: 20%;
+    display: block;
+    margin: 0 auto;
+		margin-top: 1em;
+}
+
 #form_signUp {
 	/* width: 50%; */
 	margin: 0 auto;
 	display: flex;
 	justify-content: center;
 }
+
+#form_edit {
+	width: 25%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#input_edit_car {
+	width: 60%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
 .header {
 	/* border: solid;
 	border-color: red; */
@@ -577,8 +610,17 @@ textarea {
 }
 
 .user_img {
-	width: 360px;
+	width: 160px;
 	height: auto;
 	display: block;
+}
 
+.user_img_profile {
+	width: 260px;
+	height: auto;
+	display: block;
+}
+
+.label_user_profile {
+	margin-left: 27.6em;
 }

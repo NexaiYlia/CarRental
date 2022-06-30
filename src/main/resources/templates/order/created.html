@@ -49,24 +49,20 @@
             </div>
         </div>
     </div>
-</div>
-
-<form method="GET" th:action="@{/payments/card/new}">
-    <input type="hidden" name="orderId" th:value="*{order.id}"/>
-    <input type="hidden" name="carId" th:value="*{car.id}"/>
-    <button type="submit" th:text="#{payment.pay}" id="btnUsersForAdmin">Pay</button>
-</form>
-<button type="button" class="btn btn-secondary m-2" onclick="cancelForm()" th:text="#{payment.cancel}"> Cancel</button>
-</div>
-
+    <form method="GET" th:action="@{/payments/card/new}">
+        <input type="hidden" name="orderId" th:value="*{order.id}"/>
+        <input type="hidden" name="carId" th:value="*{car.id}"/>
+        <button type="submit" th:text="#{payment.pay}" id="form_pay">Pay</button>
+    </form>
+    <button type="button" id="form_pay" onclick="cancelForm()" th:text="#{payment.cancel}"> Cancel
+    </button>
 </div>
 
 <script type="text/javascript">
     function cancelForm(){
-    window.location="[[@{/cars}]]";
+    window.location="[[@{/cars/carsForUser}]]";
     }
-
 </script>
-<footer th:insert="blocks/footer::footer"></footer>
+<footer th:insert="blocks/footer::footer" id="footer_other"></footer>
 </body>
 </html>

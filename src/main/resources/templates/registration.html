@@ -38,7 +38,7 @@
                 <label for="name" th:text="#{authorization.name}" class="label">Enter name: </label>
                 <input type="name" name="name" id="name" th:placeholder="#{login.placeholderForName}" required
                        class="input"/>
-                <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
             </div>
 
             <div>

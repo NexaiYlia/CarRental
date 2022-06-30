@@ -33,5 +33,4 @@ public class ProjectExceptionHandler {
                 request.getRequestURL());
         return modelAndView;
     }
-
 }

@@ -13,6 +13,8 @@
     <div th:insert="blocks/header::header"></div>
     <div th:insert="blocks/menu::menu"></div>
     <div class="main-content"><h1>List orders</h1></div>
+    <div>&nbsp</div>
+    <div style="color:red " th:if="${message}"><h1>[[${message}]]</h1></div>
     <form th:method="GET" th:action="@{/orders/searchOrderByStatus/1}" class="formForSearch">
         <h3 th:text="#{orderInfo.st}">Select orders by status:</h3>
         <div id="SearchBtn">

@@ -16,7 +16,7 @@
             <tbody>
             <tr>
                 <td align="right" valign="top">
-                    <img class="user_img" src="../img/user_default.webp" alt="user_default">
+                    <img class="user_img_profile" src="../img/user_default.webp" alt="user_default">
                 </td>
                 <td width="60%">
                     <div style="color:red" th:if="${message}" class="alert alert-success text-center">
@@ -43,12 +43,12 @@
                         </div>
                         <div>
                             <p><span th:text="#{userInfo.roles}">Role</span>
-                            <div sec:authorize="hasRole('ROLE_ADMIN')">
+                                <span sec:authorize="hasRole('ROLE_ADMIN')">
                                 <strong>administrator</strong>
-                            </div>
-                            <div sec:authorize="hasRole('USER')">
+                            </span>
+                                <span sec:authorize="hasRole('USER')">
                                 <strong>user</strong>
-                            </div>
+                            </span>
                         </div>
                     </div>
                 </td>
@@ -59,7 +59,7 @@
     <div>
         <form th:method="GET" th:action="@{'/users/updatePasswordOfUser/'+${user.id}}">
             <div>
-                <label for="password" th:text="#{profile.password}" class="label">If you want to
+                <label for="password" th:text="#{profile.password}" class="label_user_profile">If you want to
                     change your password, enter it in the box below and then click save.</label>
                 <input type="password" name="password" id="password" th:placeholder="#{login.password}" required
                        class="input" style="display:block; max-width: 250px; margin: 0 auto; margin-top: 1em;"/>
@@ -79,6 +79,8 @@
     function cancelForm(){
     window.location="[[@{/}]]";
     }
+
+
 
 
 

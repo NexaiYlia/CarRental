@@ -53,14 +53,15 @@
         <p></p>
     </th:block>
 </div>
-<h1 th:text="#{accidentInfo.costOf}">TOTAL COST OF ACCIDENTS:<strong th:text="${totalCost}" id="totalCost"></strong></h1>
+<h1 th:text="#{accidentInfo.costOf}">TOTAL COST OF ACCIDENTS:<strong th:text="${totalCost}" id="totalCost"></strong>
+</h1>
 
 <th:block th:each="accident:${accidents}">
     <div th:if="${accident.isPaid} eq true">
-        <h1 th:text="#{accidentInfo.paid1}"> Accident №[[${accident.id}]] is paid:[[${accident.isPaid}]]</a></h1>
+        <h1> Accident №[[${accident.id}]] is paid:[[${accident.isPaid}]]</a></h1>
     </div>
     <div th:unless="${accident.isPaid} eq true">
-        <h1 th:text="#{accidentInfo.paid2}"> Accident №[[${accident.id}]] isn't paid yet.</a></h1>
+        <h1> Accident №[[${accident.id}]] isn't paid yet.</a></h1>
     </div>
 </th:block>
 
@@ -92,6 +93,7 @@
     function cancelForm(){
     window.location="[[@{/orders/ordersForUser}]]";
     }
+
 
 
 

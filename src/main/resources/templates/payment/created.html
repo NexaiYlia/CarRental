@@ -50,19 +50,15 @@
             </div>
         </div>
     </div>
+    <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()" th:text="#{payment.cancel}"> Cancel
+    </button>
+    <footer th:insert="blocks/footer::footer" id="footer_other"></footer>
 </div>
-<button type="button" class="btn btn-secondary m-2" onclick="cancelForm()" th:text="#{payment.cancel}"> Cancel</button>
-</div>
-
-</div>
-
 <script type="text/javascript">
     function cancelForm(){
     window.location="[[@{/}]]";
     }
 
-
 </script>
-<footer th:insert="blocks/footer::footer"></footer>
 </body>
 </html>

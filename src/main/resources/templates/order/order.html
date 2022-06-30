@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div style="color:red" th:if="${timeEmpty}">[[${timeEmpty}]]</div>
+        <div th:if="${timeEmpty}">[[${timeEmpty}]]</div>
         <form id="form_rent_price" method="get" th:action="@{'/orders/cost/'+${car.id}}">
             <div>
                 <label th:text="#{carInfo.startDay}">Start date</label>
@@ -63,7 +63,7 @@
                     <input type="date" id="endDate" name="endDate" th:value="*{endDate}" required class="input"/>
                 </div>
             </div>
-            <div style="color:red" th:if="${cost}">
+            <div th:if="${cost}">
                 <h1 th:text="#{carInfo.cost}">Total rental price:</h1>
                 <h1>[[${cost}]]</h1>
             </div>
@@ -74,13 +74,11 @@
             <input type="hidden" name="endDate" th:value="*{endDate}" required/>
             <button type="submit" th:text="#{carInfo.checkout}">Checkout</button>
         </form>
-        <button type="button" onclick="cancelForm()" th:text="#{userInfo.cancel}"> Cancel</button>
+            <button type="button" onclick="cancelForm()" th:text="#{userInfo.cancel}"> Cancel</button>
         <script type="text/javascript">
             function cancelForm(){
             window.location="[[@{/cars/carsForUser}]]";
             }
-
-
         </script>
         <footer th:insert="blocks/footer::footer"></footer>
     </div>

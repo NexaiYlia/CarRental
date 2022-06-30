@@ -56,7 +56,7 @@ public class CommentController {
     public String createComment(@RequestParam("content") String content, Principal principal, RedirectAttributes ra) {
         commentService.createNewComment(content, principal);
         ra.addFlashAttribute(MESSAGE, "The comment has been added successfully.");
-        return "redirect:/comments";
+        return "redirect:/commentsMainPage";
     }
 
     @PreAuthorize("isAuthenticated()")

@@ -2,6 +2,7 @@ package com.academy.car_rental.controller;
 
 import com.academy.car_rental.exception.ServiceException;
 import com.academy.car_rental.model.entity.Accident;
+import com.academy.car_rental.model.entity.type.OrderStatus;
 import com.academy.car_rental.service.AccidentService;
 import com.academy.car_rental.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -55,15 +56,32 @@ public class AccidentController {
     @GetMapping(value = "/createNew/{id}")
     public String createNewAccident(@PathVariable("id") Integer id,
                                     RedirectAttributes ra, Model model) {
+
         try {
             var order = orderService.getById(id);
+            if (order.getStatus().equals(OrderStatus.APPROVED)){
+                ra.addFlashAttribute(MESSAGE, "This order isn't active. You can't change something");
+                model.addAttribute(SORT_FIELD_FOR_MODEL, "id");
+
+                String reverseSortDirection = "asc".equals(ASC_FOR_SORT_DIRECTION) ?
+                        DESC_FOR_SORT_DIRECTION : ASC_FOR_SORT_DIRECTION;
+                model.addAttribute(SORT_DIRECTION_FOR_MODEL, "asc");
+                model.addAttribute(REVERSE_SORT_DIRECTION_FOR_MODEL, reverseSortDirection);
+                return "redirect:/orders/1?sortField=id&sortDirection=asc";
+            }
             if(orderService.isOrderActive(order)) {
                 model.addAttribute(ACCIDENT_FOR_MODEL, new Accident());
                 model.addAttribute(ORDER_FOR_MODEL, order);
                 model.addAttribute(PAGE_TITLE_FOR_MODEL, "Add new accident");
             } else{
                 ra.addFlashAttribute(MESSAGE, "This order isn't active. You can't change something");
-                return "redirect:/orders";
+                model.addAttribute(SORT_FIELD_FOR_MODEL, "id");
+
+                String reverseSortDirection = "asc".equals(ASC_FOR_SORT_DIRECTION) ?
+                        DESC_FOR_SORT_DIRECTION : ASC_FOR_SORT_DIRECTION;
+                model.addAttribute(SORT_DIRECTION_FOR_MODEL, "asc");
+                model.addAttribute(REVERSE_SORT_DIRECTION_FOR_MODEL, reverseSortDirection);
+                return "redirect:/orders/1?sortField=id&sortDirection=asc";
             }
         } catch (ServiceException e) {
             ra.addFlashAttribute(MESSAGE, "The order wasn't found." + e.getMessage());
@@ -103,7 +121,7 @@ public class AccidentController {
         } else {
             ra.addFlashAttribute(MESSAGE, "The accident hasn't been added. Something go wrong ");
         }
-        return "redirect:/orders";
+        return "redirect:/orders/1?sortField=id&sortDirection=asc";
     }
 
 

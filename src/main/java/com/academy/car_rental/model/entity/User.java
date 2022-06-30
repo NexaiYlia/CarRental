@@ -23,12 +23,12 @@ public class User {
 
     @Column(name = "username")
     @NotBlank(message = "username is required field")
-    @Size(min = 4, message = "name must be min 6 symbols")
+    @Size(min = 3, message = "name must be min 3 symbols")
     private String username;
 
     @Column(name = "password")
     @NotBlank(message = "password is required field")
-    @Size(min = 4, message = "password must be min 6 symbols")
+    @Size(min = 6, message = "password must be min 6 symbols")
     private String password;
 
     @Column(name = "first_name")

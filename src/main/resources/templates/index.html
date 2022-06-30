@@ -39,8 +39,8 @@
             <section class="choose_price">
                 <h2 th:text="#{app.cost}">Choice by rental price:</h2>
                 <form id="form_rent_price" th:action="@{/carsForUser}" method="get">
-                    <input type="number" placeholder="0...1000" name="pricePerDayAfter" min="0" max="1000">
-                    <input type="number" placeholder="0...1000" name="pricePerDayBefore" min="0" max="1000">
+                    <input type="number" placeholder="0...1000" name="pricePerDayAfter" min="0" max="100">
+                    <input type="number" placeholder="0...1000" name="pricePerDayBefore" min="0" max="100">
                     <button type="submit" th:text="#{app.show}">Show</button>
                 </form>
             </section>

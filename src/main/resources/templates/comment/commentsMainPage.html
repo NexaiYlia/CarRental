@@ -13,9 +13,16 @@
     <div th:insert="blocks/header::header"></div>
     <div th:insert="blocks/menu::menu"></div>
     <div class="main-content"><h1 th:text="#{commentInfo.com}">List comments</h1></div>
+    <div sec:authorize="hasRole('ROLE_USER')">
+        <div id="AddBtn">
+            <form th:method="GET" th:action="@{/comments/new}">
+                <button type="submit" th:text="#{commentInfo.add}">Add new comment</button>
+            </form>
+        </div>
+    </div>
     <th:block th:each="comment:${comments}">
         <div class="userInfo">
-            <table width="50%">
+            <table width="50%" align="center">
                 <tbody>
                 <tr>
                     <td align="right" valign="top">

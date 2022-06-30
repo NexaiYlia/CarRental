@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 import java.util.Locale;
 
 @Configuration
-public class MvcConfig implements WebMvcConfigurer {
+public class  MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         Path usersUploadDirectory = Paths.get("./cars-images");

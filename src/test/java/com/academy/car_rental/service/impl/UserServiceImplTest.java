@@ -111,7 +111,7 @@ public class UserServiceImplTest {
 
 
     @Test
-    void updatePasswordOfUserTest() throws ServiceException {
+    void updatePasswordOfUserTest()  {
         var userChange = User.builder()
                 .id(1)
                 .username("user")

@@ -97,6 +97,13 @@ public class OrderController {
         List<Order> orders = orderService.findByStartDate(date);
         List<Accident> accidents = accidentService.getAll();
         List<Payment> payments = paymentService.getAll();
+        if (orders.isEmpty()) {
+
+            model.addAttribute(ACCIDENTS_FOR_MODEL, accidents);
+            model.addAttribute(PAYMENTS_FOR_MODEL, payments);
+            return "redirect:orders/1?sortField=id&sortDirection=asc";
+        }
+
         model.addAttribute(PAGE_FOR_MODEL, page);
         model.addAttribute(ORDERS_FOR_MODEL, orders);
         model.addAttribute(ACCIDENTS_FOR_MODEL, accidents);
@@ -118,8 +125,6 @@ public class OrderController {
                                 Model model,
                                 Principal principal,
                                 RedirectAttributes ra) throws ServiceException {
-        System.out.println(startDate + endDate);
-        System.out.println("_______________________________________________________________");
         var car = carService.getById(carId);
 
         if (startDate.isBlank() || endDate.isBlank()) {

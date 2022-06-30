@@ -1,5 +1,6 @@
 package com.academy.car_rental.controller;
 
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
-public class ProjectErrorController implements org.springframework.boot.web.servlet.error.ErrorController {
+public class ProjectErrorController implements ErrorController {
 
     @GetMapping("/error")
     public String handlerError(HttpServletRequest request) {
