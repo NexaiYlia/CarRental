@@ -6,13 +6,13 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/> 
     </parent>
     <groupId>com.academy</groupId>
     <artifactId>car_rental</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>car_rental</name>
-    <description>Final project using Spring Boot and Thymlife</description>
+    <description>Final project using Spring Boot and Thymeleaf</description>
     <properties>
         <junit.jupiter.version>5.8.1</junit.jupiter.version>
         <junit.platform.version>1.8.1</junit.platform.version>

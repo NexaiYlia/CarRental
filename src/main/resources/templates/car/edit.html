@@ -85,12 +85,18 @@
         </div>
             </div>
             <input type="hidden" name="id" th:value="${car.id}" required/>
-            <button type="submit" th:text="#{carsave.save}">Save</button>
+            <button type="submit" th:text="#{carSave.save}">Save</button>
 
     </form>
     <button type="button" onclick="cancelForm()" th:text="#{menu.cancel}">Cancel</button>
     <footer th:insert="blocks/footer::footer"></footer>
 </div>
-<script src="/js/car-settings.js"></script>
+<script type="text/javascript">
+    function cancelForm(){
+    window.location="[[@{/cars}]]";
+    }
+
+
+</script>
 </body>
 </html>
